@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.myp.cinema">>
+    package="com.myp.hhcinema">
 
     <!-- 微信权限-->
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <!--分享权限-->
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -20,7 +21,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <!--极光推送所需的权限-->
     <permission
-        android:name="com.myp.cinema.permission.JPUSH_MESSAGE"
+        android:name="com.myp.hhcinema.permission.JPUSH_MESSAGE"
         android:protectionLevel="signature" />
     <uses-permission android:name="com.myp.meiyuan.permission.JPUSH_MESSAGE" />
     <!--百度地图权限-->
@@ -35,19 +36,20 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <application
-        android:name="com.myp.cinema.base.MyApplication"
+        android:name="com.myp.hhcinema.base.MyApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:launchMode="singleInstance"
         android:persistent="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!--记载X5内核的服务-->
-        <service android:name=".service.AdvanceLoadX5Service"></service>
+        <service android:name="com.myp.hhcinema.service.AdvanceLoadX5Service"></service>
         <!--引导页面-->
         <activity
-            android:name="com.myp.cinema.ui.GuidePageAct"
+            android:name="com.myp.hhcinema.ui.GuidePageAct"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/MyTheme.NoTitleBar.Background">
@@ -58,58 +60,78 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".ui.InfoActivity"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Mike" />
+
         <!--首页-->
         <activity
-            android:name="com.myp.cinema.ui.main.MainActivity"
+            android:name="com.myp.hhcinema.ui.main.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Mike" />
+
+        <!--推送消息列表 -->
+        <activity
+            android:name="com.myp.hhcinema.ui.message.MessageActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Mike" />
+
+        <!--积分详情 -->
+        <activity
+            android:name="com.myp.hhcinema.ui.scoredetail.ScoreDetailActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--登录页面-->
         <activity
-            android:name="com.myp.cinema.ui.userlogin.LoginActivity"
+            android:name="com.myp.hhcinema.ui.userlogin.LoginActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--注册页面-->
         <activity
-            android:name="com.myp.cinema.ui.userregister.RegisterActivity"
+            android:name="com.myp.hhcinema.ui.userregister.RegisterActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--忘记密码一层页面-->
         <activity
-            android:name="com.myp.cinema.ui.userforwordpass.VerifyActivity"
+            android:name="com.myp.hhcinema.ui.userforwordpass.VerifyActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--忘记密码修改密码页面-->
         <activity
-            android:name="com.myp.cinema.ui.userforwordpass.ForwordPassWordActivity"
+            android:name="com.myp.hhcinema.ui.userforwordpass.ForwordPassWordActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--签到页面-->
         <activity
-            android:name="com.myp.cinema.ui.signin.SignInActivity"
+            android:name="com.myp.hhcinema.ui.signin.SignInActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--影厅列表界面-->
         <activity
-            android:name="com.myp.cinema.ui.moviesseltor.SeltormovieActivity"
+            android:name="com.myp.hhcinema.ui.moviesseltor.SeltormovieActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--城市列表界面-->
         <activity
-            android:name="com.myp.cinema.ui.selectorcity.SelectorCityActivity"
+            android:name="com.myp.hhcinema.ui.selectorcity.SelectorCityActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -117,21 +139,21 @@
 
         <!--选择影片场次页面-->
         <activity
-            android:name="com.myp.cinema.ui.moviessession.SessionActivity"
+            android:name="com.myp.hhcinema.ui.moviessession.SessionActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--影片详情页面-->
         <activity
-            android:name="com.myp.cinema.ui.moviesmessage.MoviesMessageActivity"
+            android:name="com.myp.hhcinema.ui.moviesmessage.MoviesMessageActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--影片预售页面-->
         <activity
-            android:name="com.myp.cinema.ui.moviespresell.PresellMoviesActivity"
+            android:name="com.myp.hhcinema.ui.moviespresell.PresellMoviesActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -139,29 +161,49 @@
 
         <!--选座页面-->
         <activity
-            android:name="com.myp.cinema.ui.moviesseattable.SeatTableActivity"
+            android:name="com.myp.hhcinema.ui.moviesseattable.SeatTableActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--确认订单页面-->
         <activity
-            android:name="com.myp.cinema.ui.orderconfrim.ConfrimOrderActivity"
+            android:name="com.myp.hhcinema.ui.orderconfrim.ConfrimOrderActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--订单支付页面-->
         <activity
-            android:name="com.myp.cinema.ui.pay.PayActivity"
+            android:name="com.myp.hhcinema.ui.pay.PayActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
+        <!--选择优惠券页面-->
+        <activity
+            android:name="com.myp.hhcinema.ui.orderconfrim.SelectCoupon"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Mike" />
 
         <!--支付成功页面-->
         <activity
-            android:name="com.myp.cinema.ui.orderconfrim.OrderSurcessActivity"
+            android:name="com.myp.hhcinema.ui.orderconfrim.OrderSurcessActivity"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Mike" />
+
+        <!--食品支付成功页面-->
+        <activity
+            android:name="com.myp.hhcinema.ui.prodectorder.ProdectOrderSuccess"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Mike" />
+
+        <!--优惠券详情页面-->
+        <activity
+            android:name="com.myp.hhcinema.ui.personcoupon.CouponDetailActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -169,7 +211,7 @@
 
         <!--约人看电影页面-->
         <activity
-            android:name="com.myp.cinema.ui.somepeople.SomePeopleActivity"
+            android:name="com.myp.hhcinema.ui.somepeople.SomePeopleActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -177,21 +219,21 @@
 
         <!--发布约人看电影页面-->
         <activity
-            android:name="com.myp.cinema.ui.someinvitation.IssuedInvitationActivity"
+            android:name="com.myp.hhcinema.ui.someinvitation.IssuedInvitationActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--发布成功看电影页面-->
         <activity
-            android:name="com.myp.cinema.ui.somesuccess.ReleaseSuccessActivity"
+            android:name="com.myp.hhcinema.ui.somesuccess.ReleaseSuccessActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--游戏列表页面-->
         <activity
-            android:name="com.myp.cinema.ui.playgame.PlayGameActivity"
+            android:name="com.myp.hhcinema.ui.playgame.PlayGameActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -199,14 +241,14 @@
 
         <!--积分兑换页面-->
         <activity
-            android:name="com.myp.cinema.ui.playcredits.PlayCreditsActivity"
+            android:name="com.myp.hhcinema.ui.playcredits.PlayCreditsActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--积分兑换记录页面-->
         <activity
-            android:name="com.myp.cinema.ui.playcredits.CreditsHistory"
+            android:name="com.myp.hhcinema.ui.playcredits.CreditsHistory"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -218,10 +260,16 @@
             <!--android:screenOrientation="portrait"-->
             <!--android:theme="@style/Theme.Mike" />-->
 
+        <!--绑定会员卡页面-->
+        <activity
+            android:name="com.myp.hhcinema.ui.membercard.BindCard"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Mike" />
 
         <!--绑定会员卡页面-->
         <activity
-            android:name="com.myp.cinema.ui.membercard.AddCardActiivty"
+            android:name="com.myp.hhcinema.ui.membercard.AddCardActiivty"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -229,14 +277,14 @@
 
         <!--个人设置页面-->
         <activity
-            android:name="com.myp.cinema.ui.personsetting.PersonSettingActivity"
+            android:name="com.myp.hhcinema.ui.personsetting.PersonSettingActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--修改昵称、密码页面-->
         <activity
-            android:name="com.myp.cinema.ui.personsetting.personupdate.PersonUpdateActivity"
+            android:name="com.myp.hhcinema.ui.personsetting.personupdate.PersonUpdateActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -244,7 +292,7 @@
 
         <!--我的影评页面-->
         <activity
-            android:name="com.myp.cinema.ui.personcomment.PersonCommentActivity"
+            android:name="com.myp.hhcinema.ui.personcomment.PersonCommentActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -252,7 +300,7 @@
 
         <!--想看的电影页面-->
         <activity
-            android:name="com.myp.cinema.ui.personwantsee.PersonWantSeeActivity"
+            android:name="com.myp.hhcinema.ui.personwantsee.PersonWantSeeActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -266,7 +314,7 @@
 
         <!--看过的电影页面-->
         <activity
-            android:name="com.myp.cinema.ui.personread.PersonReadActivity"
+            android:name="com.myp.hhcinema.ui.personread.PersonReadActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -274,21 +322,21 @@
 
         <!--电影评分页面-->
         <activity
-            android:name=".ui.personread.persongrade.PersonGradeActivity"
+            android:name="com.myp.hhcinema.ui.personread.persongrade.PersonGradeActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--我的约会页面-->
         <activity
-            android:name=".ui.personsome.PersonSomeActivity"
+            android:name="com.myp.hhcinema.ui.personsome.PersonSomeActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--我的优惠券页面-->
         <activity
-            android:name=".ui.personcoupon.PersonCouponActivity"
+            android:name="com.myp.hhcinema.ui.personcoupon.PersonCouponActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike"
@@ -297,14 +345,28 @@
 
         <!--我的订单页面-->
         <activity
-            android:name=".ui.personorder.PersonOrderActivity"
+            android:name="com.myp.hhcinema.ui.personorder.PersonOrderActivity"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Mike" />
+
+        <!--我的订单页面-->
+        <activity
+            android:name="com.myp.hhcinema.ui.prodectorder.ProdectOrderActivity"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Mike" />
+
+        <!--食品订单页面-->
+        <activity
+            android:name="com.myp.hhcinema.ui.foodorderlist.FoodOrderActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--未支付订单详情-->
         <activity
-            android:name=".ui.personorder.notpaymessage.NotPayMessageActivity"
+            android:name="com.myp.hhcinema.ui.personorder.notpaymessage.NotPayMessageActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -312,7 +374,7 @@
 
         <!--已支付订单详情-->
         <activity
-            android:name=".ui.personorder.ordermessage.OrderMessageActivity"
+            android:name="com.myp.hhcinema.ui.personorder.ordermessage.OrderMessageActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -320,14 +382,14 @@
 
         <!--基本设置页面-->
         <activity
-            android:name=".ui.SettingActivity"
+            android:name="com.myp.hhcinema.ui.SettingActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
         <!--意见反馈页面-->
         <activity
-            android:name=".ui.feedbacklist.FeedBackActivity"
+            android:name="com.myp.hhcinema.ui.feedbacklist.FeedBackActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -335,7 +397,7 @@
 
         <!--关于我们页面-->
         <activity
-            android:name=".ui.AboutActivity"
+            android:name="com.myp.hhcinema.ui.AboutActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -343,15 +405,29 @@
 
         <!--评分完成分享页面-->
         <activity
-            android:name=".ui.personread.moviesshare.MoviesShareActivity"
+            android:name="com.myp.hhcinema.ui.personread.moviesshare.MoviesShareActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
 
+        <!--卖品页面-->
+        <activity
+            android:name="com.myp.hhcinema.ui.hotsellprodect.HotSellActivity"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Mike" />
 
         <!--H5页面-->
         <activity
-            android:name="com.myp.cinema.ui.WebViewActivity"
+            android:name="com.myp.hhcinema.ui.WebViewActivity"
+            android:launchMode="standard"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Mike"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <!--积分商城支付成功H5页面-->
+        <activity
+            android:name="com.myp.hhcinema.ui.main.PaySuccessActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike"
@@ -359,7 +435,7 @@
 
         <!--视频播放页面-->
         <activity
-            android:name=".ui.VideoPlayerActivity"
+            android:name="com.myp.hhcinema.ui.VideoPlayerActivity"
             android:configChanges="orientation|keyboardHidden|screenLayout|screenSize"
             android:launchMode="standard"
             android:theme="@style/Theme.Mike" />
@@ -367,7 +443,7 @@
 
         <!--程序报错时进入的ERROR页面-->
         <activity
-            android:name="com.myp.cinema.ui.CustomErrorActivity"
+            android:name="com.myp.hhcinema.ui.CustomErrorActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Mike" />
@@ -375,7 +451,7 @@
         <!--兼容部分手机自动更新安装apk失败-->
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.myp.cinema.fileprovider"
+            android:authorities="com.myp.hhcinema.fileprovider1"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -392,11 +468,11 @@
         <!--//key:百度地图开发者申请的Key-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="G7BccUx4Xpnjjto5adzcrt0F0MBIop07" />
+            android:value="LDvbOrT1A5rOGrsCLTpa13ufqeOpfwMD" />
 
         <!--微信登陆及分享-->
         <activity
-            android:name="com.myp.cinema.wxapi.WXEntryActivity"
+            android:name="com.myp.hhcinema.wxapi.WXEntryActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:launchMode="singleTop"
@@ -404,7 +480,7 @@
 
         <!--微信支付-->
         <activity
-            android:name="com.myp.cinema.wxapi.WXPayEntryActivity"
+            android:name="com.myp.hhcinema.wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@android:style/Theme.Translucent" />
@@ -479,43 +555,165 @@
             android:name="Mob-AppSecret"
             android:value="8ccdad3383a2613e946844289e459fd6" />
 
-        <!--集成极光推送配置-->
+
+
+
+        <!-- Required SDK 核心功能-->
+        <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
             android:name="cn.jpush.android.service.PushService"
-            android:process=":multiprocess"
-            tools:node="replace" />
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+
+        <!-- since 3.0.9 Required SDK 核心功能-->
+        <provider
+            android:authorities="com.myp.hhcinema.DataProvider"
+            android:name="cn.jpush.android.service.DataProvider"
+            android:exported="false"
+            />
+
+        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+        <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter >
+                <action android:name="cn.jpush.android.intent.DaemonService" />
+                <category android:name="com.myp.hhcinema"/>
+            </intent-filter>
+        </service>
+
+        <!-- Required SDK核心功能-->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true" >
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <category android:name="com.myp.hhcinema"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required SDK核心功能-->
         <activity
-            android:name=".ui.phonecode.phonecode"></activity>
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.myp.hhcinema" />
+            </intent-filter>
+        </activity>
+        <!-- SDK核心功能-->
         <activity
-            android:name=".ui.phonecode.phonecode2"></activity>
+            android:name="cn.jpush.android.ui.PopWinActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:theme="@style/MyDialogStyle">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="com.myp.hhcinema" />
+            </intent-filter>
+        </activity>
+
+        <!-- Required SDK核心功能-->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+
+        <!-- Required SDK核心功能-->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+
+
+        <!-- Required since 3.0.7 -->
+        <!-- 新的tag/alias接口结果返回需要开发者配置一个自定的广播 -->
+        <!-- 该广播需要继承JPush提供的JPushMessageReceiver类, 并如下新增一个 Intent-Filter -->
+        <receiver
+            android:name=".jpush.MyJPushMessageReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
+                <category android:name="com.myp.hhcinema" />
+            </intent-filter>
+        </receiver>
+
+        <!-- User defined. 用户自定义的广播接收器-->
+        <receiver
+            android:name=".jpush.MyReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <!--Required 用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!--Required 用户接收SDK消息的intent-->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!--Required 用户接收SDK通知栏信息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!--Required 用户打开自定义通知栏的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <category android:name="com.myp.hhcinema" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+        <!-- Required. AppKey copied from Portal -->
+        <meta-data android:name="JPUSH_APPKEY" android:value="61b0e07a185786ba2a1d27aa"/>
+
+
         <activity
-            android:name="com.myp.cinema.ui.phonecode2two.phonecode2two"></activity>
+            android:name="com.myp.hhcinema.ui.phonecode.phonecode"></activity>
         <activity
-            android:name="com.myp.cinema.ui.personcollect.PersonCollectActivity2"></activity>
+            android:name="com.myp.hhcinema.ui.phonecode.phonecode2"></activity>
         <activity
-            android:name="com.myp.cinema.ui.detailsofrefund.detailsofrefund"></activity>
+            android:name="com.myp.hhcinema.ui.phonecode2two.phonecode2two"></activity>
         <activity
-            android:name="com.myp.cinema.ui.accountbalance.accountbalance"></activity>
+            android:name="com.myp.hhcinema.ui.personcollect.PersonCollectActivity2"></activity>
         <activity
-            android:name="com.myp.cinema.ui.Prizesreading.Prizesreading"></activity>
+            android:name="com.myp.hhcinema.ui.detailsofrefund.detailsofrefund"></activity>
         <activity
-            android:name=".ui.rechatge.rechatge"></activity>
+            android:name="com.myp.hhcinema.ui.accountbalance.accountbalance"></activity>
         <activity
-            android:name="com.myp.cinema.ui.paysuccess.PaysuccessActivity"></activity>
+            android:name="com.myp.hhcinema.ui.Prizesreading.Prizesreading"></activity>
         <activity
-            android:name="com.myp.cinema.ui.detailed.detailed"></activity>
+            android:name="com.myp.hhcinema.ui.rechatge.rechatge"></activity>
         <activity
-            android:name="com.myp.cinema.ui.agreement.agreement"></activity>
+            android:name="com.myp.hhcinema.ui.paysuccess.PaysuccessActivity"></activity>
         <activity
-            android:name="com.myp.cinema.ui.applicationforrefund.applicationforrefund"></activity>
+            android:name="com.myp.hhcinema.ui.detailed.detailed"></activity>
         <activity
-            android:name="com.myp.cinema.ui.allcritic.allcritic"></activity>
+            android:name="com.myp.hhcinema.ui.agreement.agreement"></activity>
         <activity
-            android:name="com.myp.cinema.ui.feedbacklist.FeedBackListActivity"></activity>
+            android:name="com.myp.hhcinema.ui.applicationforrefund.applicationforrefund"></activity>
         <activity
-            android:name="com.myp.cinema.ui.membercard.MemberCardActivity"></activity>
+            android:name="com.myp.hhcinema.ui.allcritic.allcritic"></activity>
         <activity
-            android:name="com.myp.cinema.ui.membercard.CardMessageActivity"></activity>
+            android:name="com.myp.hhcinema.ui.feedbacklist.FeedBackListActivity"></activity>
+        <activity
+            android:name="com.myp.hhcinema.ui.membercard.MemberCardActivity"></activity>
+        <activity
+            android:name="com.myp.hhcinema.ui.membercard.CardMessageActivity"></activity>
     </application>
 
 </manifest>

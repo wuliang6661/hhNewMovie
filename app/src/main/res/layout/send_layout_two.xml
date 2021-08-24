@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:background="#ffffff"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/movieName"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="name"
+        android:textColor="#2B2B2B"
+        android:textSize="15sp"
+        android:layout_marginTop="28dp"/>
+    <TextView
+        android:id="@+id/movieMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#2B2B2B"
+        android:textSize="15sp"
+        android:text="name"
+        android:layout_marginTop="3dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/RlOthers">
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="39dp"
+            android:textColor="#2B2B2B"
+            android:textSize="15sp"
+            android:text="其他座位"/>
+        <ImageView
+            android:id="@+id/imageSelect"
+            android:layout_height="20dp"
+            android:layout_width="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="41dp"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/item_notselect"/>
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请确保您此时正在座位上"
+        android:layout_marginTop="20dp"
+        android:textSize="12sp"
+        android:textColor="#D35458"/>
+
+    <Button
+        android:id="@+id/btnSuretwo"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/sure_bg"
+        android:text="确定"
+        android:textSize="15sp"
+        android:textColor="#FFFFFF"/>
+
+</LinearLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/layoutMain">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/decrease_dialog__bg">
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="取餐方式"
+            android:textSize="16sp"
+            android:textColor="#FEFDFD"
+            android:layout_centerInParent="true"/>
+
+        <RelativeLayout
+            android:id="@+id/rlLastStep"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp">
+            <TextView
+                android:id="@+id/txtLastStep"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="上一步"
+                android:textSize="14sp"
+                android:textColor="#FEFDFD"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlConfirm"
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="确认"
+                android:layout_alignParentEnd="true"
+                android:textSize="14sp"
+                android:textColor="#FEFDFD"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+    <com.myp.hhcinema.widget.viewpager.ViewPagerSlide
+        android:id="@+id/viewPager"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+    </com.myp.hhcinema.widget.viewpager.ViewPagerSlide>
+</LinearLayout>

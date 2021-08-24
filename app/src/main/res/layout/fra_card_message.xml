@@ -6,9 +6,10 @@
     android:orientation="vertical">
     <include layout="@layout/header_layout02" />
     <RelativeLayout
+        android:id="@+id/rlCard"
         android:layout_width="match_parent"
         android:layout_height="212dp"
-        android:background="@drawable/kapian">
+        android:background="@mipmap/vipcard">
 
 
         <TextView
@@ -38,7 +39,7 @@
             android:layout_height="17dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/margin_top"
-            android:background="@drawable/wodeyue" />
+            android:background="@mipmap/left_money" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,7 +48,7 @@
             android:layout_marginLeft="@dimen/margin_top"
             android:layout_toRightOf="@+id/huiyuanka"
             android:text="我的余额"
-            android:textColor="@color/text_big"
+            android:textColor="#FF1A1A1A"
             android:textSize="@dimen/text_big" />
 
         <ImageView
@@ -57,18 +58,21 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/margin_top"
-            android:background="@drawable/xijiantou" />
+            />
 
         <TextView
             android:id="@+id/card_price"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:layout_centerVertical="true"
+            android:drawableStart="@mipmap/eye_close"
+            android:drawablePadding="12dp"
             android:layout_marginRight="@dimen/margin_top"
-            android:layout_toLeftOf="@+id/right01"
-            android:text="¥436.00"
+            android:layout_toStartOf="@+id/right01"
+            android:text="******"
             android:textColor="#e7271d"
-            android:textSize="@dimen/text_center" />
+            android:textSize="15sp" />
 
 
         <View
@@ -91,7 +95,7 @@
             android:layout_height="17dp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/margin_top"
-            android:background="@drawable/wodejifen" />
+            android:background="@mipmap/score" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -100,7 +104,7 @@
             android:layout_marginLeft="@dimen/margin_top"
             android:layout_toRightOf="@+id/jifen"
             android:text="我的积分"
-            android:textColor="@color/text_big"
+            android:textColor="#FF1A1A1A"
             android:textSize="@dimen/text_big" />
 
         <ImageView
@@ -110,7 +114,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/margin_top"
-            android:background="@drawable/xijiantou" />
+            />
 
         <TextView
             android:id="@+id/card_jifen"
@@ -120,7 +124,7 @@
             android:layout_marginRight="@dimen/margin_top"
             android:layout_toLeftOf="@+id/right02"
             android:text="200"
-            android:textColor="@color/text_big"
+            android:textColor="#FF1A1A1A"
             android:textSize="@dimen/text_center" />
 
 
@@ -222,5 +226,130 @@
             android:background="@drawable/xijiantou" />
 
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/myBalanceDetail"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/huiyuanka1"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_top"
+            android:background="@drawable/chongzhimingxi" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_top"
+            android:layout_toRightOf="@+id/huiyuanka1"
+            android:text="充值明细"
+            android:textColor="#FF1A1A1A"
+            android:textSize="@dimen/text_big" />
+
+        <ImageView
+            android:id="@+id/right05"
+            android:layout_width="6dp"
+            android:layout_height="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_top"
+            android:background="@drawable/xijiantou" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/margin_top"
+            android:background="@color/act_bg01" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/myCostDetail"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/jifen1"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_top"
+            android:background="@drawable/xiaoximingxi" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_top"
+            android:layout_toRightOf="@+id/jifen1"
+            android:text="消费明细"
+            android:textColor="#FF1A1A1A"
+            android:textSize="@dimen/text_big" />
+
+        <ImageView
+            android:id="@+id/right06"
+            android:layout_width="6dp"
+            android:layout_height="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_top"
+            android:background="@drawable/xijiantou" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/margin_top"
+            android:background="@color/act_bg01" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="80dp">
+
+        <RelativeLayout
+            android:id="@+id/rlUnBind"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:background="@mipmap/unbindbg"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="解绑"
+                android:layout_centerInParent="true"
+                android:textSize="15sp"
+                android:textColor="#FEFCFC"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/payBtn"
+            android:background="@mipmap/unbindbg"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="35dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="10dp">
+            <TextView
+                android:text="充值"
+                android:textColor="#FEFCFC"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

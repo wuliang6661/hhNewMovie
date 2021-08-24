@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.myp.cinema.widget.mypicker.LoopView
+                <com.myp.hhcinema.widget.mypicker.LoopView
                     android:id="@+id/loop_data"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

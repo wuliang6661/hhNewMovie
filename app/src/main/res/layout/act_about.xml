@@ -23,19 +23,10 @@
 
         <ImageView
             android:id="@+id/imgView"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/about_img" />
-
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:text="德信影城"
-            android:textColor="@color/text_big"
-            android:textSize="16dp" />
+            android:scaleType="fitXY"
+            android:src="@mipmap/logo" />
 
 
         <TextView
@@ -97,7 +88,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Copyright © 2017"
+            android:text="Copyright © 2019"
             android:textColor="@color/text_big"
             android:textSize="@dimen/text_small" />
 

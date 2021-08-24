@@ -59,8 +59,9 @@
                     android:maxLength="11"
                     android:singleLine="true"
                     android:text="拆弹专家"
-                    android:textColor="@color/text_big"
-                    android:textSize="@dimen/text_big" />
+                    android:textStyle="bold"
+                    android:textColor="#373737"
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/movies_point"
@@ -84,7 +85,7 @@
                 android:ellipsize="end"
                 android:maxLength="15"
                 android:singleLine="true"
-                android:text="拆弹专家追击炸弹狂徒"
+                android:text=""
                 android:textColor="#454545"
                 android:textSize="@dimen/text_center" />
 
@@ -97,22 +98,76 @@
                 android:text=""
                 android:textColor="@color/text_small"
                 android:textSize="@dimen/text_small" />
-
-            <ImageView
-                android:id="@+id/moives_type"
-                android:layout_width="49dp"
-                android:layout_height="17dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/img_2d" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+                <ImageView
+                    android:id="@+id/moives_type"
+                    android:layout_width="49dp"
+                    android:layout_height="17dp"
+                    android:background="@drawable/img_2d"
+                    android:layout_centerVertical="true"/>
+                <TextView
+                    android:id="@+id/txtLanguage"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="#888888"
+                    android:textSize="10sp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="25dp"/>
+            </RelativeLayout>
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/ll"
+            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="11dp"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#D35458"
+                android:textSize="12sp"
+                android:text="￥" />
+            <TextView
+                android:id="@+id/txtNormalPrice"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#D35458"
+                android:text="0"
+                android:layout_marginStart="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="起"
+                android:textSize="11sp"
+                android:textColor="#D35458"
+                android:layout_marginStart="5dp"/>
+        </LinearLayout>
 
+        <TextView
+            android:id="@+id/txtVIPPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="11dp"
+            android:layout_below="@id/ll"
+            android:layout_marginTop="5dp"
+            android:textColor="#666666"
+            android:textSize="10sp"/>
         <Button
             android:id="@+id/pay_button"
             android:layout_width="51dp"
             android:layout_height="25dp"
-            android:layout_centerVertical="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
             android:layout_marginRight="@dimen/margin_top"
             android:background="@drawable/submit_button_bg"
             android:text="购票"

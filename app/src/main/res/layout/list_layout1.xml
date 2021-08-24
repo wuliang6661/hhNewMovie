@@ -10,7 +10,7 @@
     <include layout="@layout/header_layout02" />
 
 
-    <com.myp.cinema.widget.swiferefresh.SwipeRefreshView
+    <com.myp.hhcinema.widget.swiferefresh.SwipeRefreshView
         android:id="@+id/swipere"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,7 +23,7 @@
             android:scrollbars="none" />
 
 
-    </com.myp.cinema.widget.swiferefresh.SwipeRefreshView>
+    </com.myp.hhcinema.widget.swiferefresh.SwipeRefreshView>
 
 
     <LinearLayout

@@ -33,7 +33,7 @@
             android:background="@drawable/xijiantou" />
 
 
-        <com.myp.cinema.widget.AvatarImageView
+        <com.myp.hhcinema.widget.AvatarImageView
             android:id="@+id/person_img"
             android:layout_width="42dp"
             android:layout_height="42dp"

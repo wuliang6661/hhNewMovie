@@ -176,7 +176,7 @@
                 android:textSize="@dimen/text_big" />
 
 
-            <com.myp.cinema.widget.MyListView
+            <com.myp.hhcinema.widget.MyListView
                 android:id="@+id/list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

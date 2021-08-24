@@ -52,6 +52,16 @@
             android:layout_alignParentRight="true"
             android:background="@drawable/fx"
             android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/txt"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="20dp"
+            android:textSize="12sp"
+            android:textColor="#ffffff"/>
         <LinearLayout
             android:id="@+id/right_bg_layout"
             android:layout_width="wrap_content"

@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-        <com.myp.cinema.widget.expandlist.view.DockingExpandableListView
+        <com.myp.hhcinema.widget.expandlist.view.DockingExpandableListView
             android:id="@+id/next_movies_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

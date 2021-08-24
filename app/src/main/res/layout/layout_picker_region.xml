@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <com.myp.cinema.widget.mypicker.LoopView
+                <com.myp.hhcinema.widget.mypicker.LoopView
                     android:id="@+id/loop_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <com.myp.cinema.widget.mypicker.LoopView
+                <com.myp.hhcinema.widget.mypicker.LoopView
                     android:id="@+id/loop_area"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

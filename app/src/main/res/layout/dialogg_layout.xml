@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:text="注：金额预计2小时内原路退回到你的支付"
+            android:text="注：金额预计三个工作日内原路退回到你的支付"
             android:textSize="11dp"
             android:textColor="#999999"
             android:layout_gravity="center_horizontal"

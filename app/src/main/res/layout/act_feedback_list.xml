@@ -14,13 +14,44 @@
         android:divider="@null"
         android:scrollbars="none" />
 
-    <TextView
-        android:id="@+id/add"
-        android:background="#32b8e8"
-        android:text="添加意见反馈"
-        android:gravity="center"
-        android:textColor="#FFFFFF"
-        android:textSize="17dp"
+    <LinearLayout
+        android:layout_height="45dp"
         android:layout_width="match_parent"
-        android:layout_height="55dp" />
+        android:orientation="horizontal">
+        <RelativeLayout
+            android:id="@+id/rlAddOnLine"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#CFAF79">
+            <TextView
+                android:id="@+id/add"
+                android:background="#CFAF79"
+                android:text="在线反馈"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlCall"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#CFAF79"
+            android:layout_marginStart="2dp">
+            <TextView
+                android:background="#CFAF79"
+                android:text="一键拨号"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

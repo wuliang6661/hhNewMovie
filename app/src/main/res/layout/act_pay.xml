@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_alignParentBottom="true"
-        android:background="#0d0d0d"
+        android:background="#CFAF79"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -18,16 +18,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_top"
-            android:text="总价："
+            android:text="确认支付："
             android:textColor="@color/white"
-            android:textSize="@dimen/text_big" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/order_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="¥ 70"
-            android:textColor="#32b8e8"
+            android:textColor="#FFFFFF"
             android:textSize="17dp"
             android:textStyle="bold" />
 
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:text="(含服务费¥3/张)"
-            android:textColor="#32b8e8"
+            android:textColor="#FFFFFF"
             android:textSize="@dimen/text_small" />
 
         <LinearLayout
@@ -138,7 +138,7 @@
                 android:button="@null"
                 android:gravity="center"
                 android:text="网上支付"
-                android:textColor="#32e8e8"
+                android:textColor="#9C7F4D"
                 android:textSize="@dimen/text_big" />
 
         </RadioGroup>

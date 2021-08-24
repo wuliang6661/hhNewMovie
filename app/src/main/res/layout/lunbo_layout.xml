@@ -14,7 +14,7 @@
         app:indicatorSelectRes="@drawable/landian"
         app:indicatorStyle="ORDINARY"
         app:indicatorUnSelectRes="@drawable/baidian" />
-    <com.myp.cinema.util.MyListView
+    <com.myp.hhcinema.util.MyListView
         android:id="@+id/ads_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

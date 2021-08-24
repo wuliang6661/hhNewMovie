@@ -188,7 +188,7 @@
                     android:textSize="@dimen/text_center" />
 
                 <TextView
-                    android:id="@+id/movies_num"
+                    android:id="@+id/movies_numm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2"
@@ -270,7 +270,7 @@
             android:layout_marginTop="10dp"
             android:textSize="10dp"
             android:layout_gravity="center_horizontal"
-            android:text="注：金额预计2小时内原路退回到你的支付账号，请及时留意关注"
+            android:text="注：金额预计3个工作日内原路退回到你的支付账号，请及时留意关注"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

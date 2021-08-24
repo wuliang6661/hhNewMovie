@@ -72,7 +72,7 @@
 
 
     <style name="MyTheme.NoTitleBar.Background" parent="@style/Theme.AppCompat">
-        <item name="android:windowBackground">@drawable/guide_logo</item>
+        <item name="android:windowBackground">@drawable/start</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
@@ -102,4 +102,21 @@
         <item name="android:windowExitAnimation">@anim/share_pop_out</item>
     </style>
 
+    <style name="bottomOut" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+    <style name="AlertDialog" parent="@android:style/Theme.DeviceDefault.Dialog.Alert">
+        <!-- 这里设置背景为透明，为了隐藏边框 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- 这里是修改顶部标题背景颜色，具体颜色自己定，可以是图片 -->
+        <item name="android:topDark">@color/white</item>
+        <!-- 这里是修改内容区域背景颜色 -->
+        <item name="android:centerDark">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog
+        </item>
+    </style>
 </resources>

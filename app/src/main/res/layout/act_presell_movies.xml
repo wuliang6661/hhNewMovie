@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:layout_alignParentBottom="true"
-        android:background="#0d0d0d"
+        android:background="#DBB177"
         android:gravity="center"
         android:text="选座购票"
-        android:textColor="#32b8e8"
+        android:textColor="#ffffff"
         android:textSize="16dp" />
 
     <include

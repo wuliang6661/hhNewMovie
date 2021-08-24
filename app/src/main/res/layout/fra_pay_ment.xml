@@ -10,7 +10,8 @@
         android:id="@+id/pay_weixin"
         android:layout_width="match_parent"
         android:layout_height="47dp"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/weixin"
@@ -93,7 +94,8 @@
         android:id="@+id/pay_zhifuba"
         android:layout_width="match_parent"
         android:layout_height="47dp"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/zhifuba"

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/denglu">
+    android:background="@mipmap/denglu">
 
 
     <LinearLayout
@@ -55,20 +55,22 @@
             android:layout_marginTop="16dp">
 
 
-//weixin,wx,weibo,wb,qq,qq
+            //weixin,wx,weibo,wb,qq,qq
 
             <ImageView
                 android:id="@+id/weibo"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/wb" />
+                android:background="@drawable/wb"
+                android:visibility="gone"/>
             <ImageView
                 android:id="@+id/weixin"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="50dp"
-                android:background="@drawable/wx" />
+                android:layout_centerHorizontal="true"
+                android:background="@mipmap/wx" />
 
             <ImageView
                 android:id="@+id/qq"
@@ -77,7 +79,8 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/qq" />
+                android:background="@drawable/qq"
+                android:visibility="gone"/>
 
         </RelativeLayout>
 
@@ -95,10 +98,10 @@
 
 
         <ImageView
-            android:layout_width="106dp"
-            android:layout_height="45dp"
+            android:layout_width="103dp"
+            android:layout_height="127dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/logo" />
+            android:background="@mipmap/logo" />
 
 
         <LinearLayout
@@ -115,7 +118,7 @@
                 android:layout_width="19dp"
                 android:layout_height="19dp"
                 android:layout_marginLeft="@dimen/margin_top"
-                android:background="@drawable/zhanghu" />
+                android:background="@mipmap/zhanghu" />
 
             <EditText
                 android:id="@+id/phone_edit"
@@ -149,7 +152,7 @@
                 android:layout_width="19dp"
                 android:layout_height="19dp"
                 android:layout_marginLeft="@dimen/margin_top"
-                android:background="@drawable/mima" />
+                android:background="@mipmap/mima" />
 
             <EditText
                 android:id="@+id/password_edit"
@@ -175,11 +178,11 @@
             android:layout_marginLeft="22dp"
             android:layout_marginRight="22dp"
             android:layout_marginTop="50dp"
-            android:background="@drawable/button_bule"
+            android:background="@mipmap/login_bg"
             android:gravity="center"
-            android:text="登陆"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:text="登录"
+            android:textColor="#141515"
+            android:textSize="14sp" />
 
 
         <RelativeLayout

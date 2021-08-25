@@ -3,9 +3,9 @@ package com.myp.hhcinema.ui.hotsellprodect;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.myp.hhcinema.R;
 
-import java.io.IOException;
 import java.util.List;
 
 

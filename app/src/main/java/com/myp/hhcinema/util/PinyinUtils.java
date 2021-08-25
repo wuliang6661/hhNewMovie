@@ -1,6 +1,7 @@
 package com.myp.hhcinema.util;
 
-import android.support.v4.util.SimpleArrayMap;
+
+import androidx.collection.SimpleArrayMap;
 
 /**
  * <pre>

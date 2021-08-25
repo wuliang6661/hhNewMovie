@@ -1,19 +1,18 @@
 package com.myp.hhcinema.ui.moviesseltor;
 
 
-import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.OrientationHelper;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.myp.hhcinema.R;
 import com.myp.hhcinema.base.MyApplication;
@@ -87,6 +86,7 @@ public class SeltormovieActivity extends MVPBaseActivity<SeltormovieContract.Vie
     /**
      * 初始化控件
      */
+    @SuppressLint("WrongConstant")
     private void initViews() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         //设置为横向布局

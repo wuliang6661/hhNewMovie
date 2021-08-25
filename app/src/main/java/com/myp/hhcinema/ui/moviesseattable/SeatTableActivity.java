@@ -2,7 +2,7 @@ package com.myp.hhcinema.ui.moviesseattable;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;

@@ -3,7 +3,7 @@ package com.myp.hhcinema.service;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.myp.hhcinema.util.LogUtils;
 import com.tencent.smtt.sdk.QbSdk;

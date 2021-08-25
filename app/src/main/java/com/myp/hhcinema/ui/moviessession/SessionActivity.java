@@ -9,9 +9,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,10 +31,8 @@ import com.myp.hhcinema.entity.MoviesByCidBO;
 import com.myp.hhcinema.entity.MoviesSessionBO;
 import com.myp.hhcinema.entity.OrderNumBO;
 import com.myp.hhcinema.entity.SessionBO;
-import com.myp.hhcinema.jpush.MessageEvent;
 import com.myp.hhcinema.mvp.MVPBaseActivity;
 import com.myp.hhcinema.ui.moviesseattable.SeatTableActivity;
-import com.myp.hhcinema.ui.personorder.PersonOrderActivity;
 import com.myp.hhcinema.ui.personorder.notpaymessage.NotPayMessageActivity;
 import com.myp.hhcinema.ui.userlogin.LoginActivity;
 import com.myp.hhcinema.util.ImageUtils;
@@ -47,12 +45,7 @@ import com.myp.hhcinema.widget.superadapter.CommonAdapter;
 import com.myp.hhcinema.widget.superadapter.ViewHolder;
 import com.squareup.picasso.Picasso;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;

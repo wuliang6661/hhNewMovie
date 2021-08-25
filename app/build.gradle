@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 30
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.myp.hhcinema"
         minSdkVersion 17
-        targetSdkVersion 27
+        targetSdkVersion 30
         versionCode  29
         versionName "2.3.3"
         multiDexEnabled true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
         ndk {
             //选择要添加的对应cpu类型的.so库。
@@ -41,13 +41,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
-        }
-        repositories {
-            jcenter()
-            maven {
-                url 'https://maven.google.com/'
-                name 'Google'
-            }
         }
 
         debug {
@@ -91,16 +84,14 @@ def releaseTime() {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     implementation 'com.alibaba:fastjson:1.2.16'
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    api 'androidx.appcompat:appcompat:1.3.1'
+    api 'androidx.constraintlayout:constraintlayout:2.1.0'
     testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support:palette-v7:27.1.1'
-    implementation 'com.android.support:cardview-v7:27.1.1'
-    implementation 'com.android.support:multidex:1.0.1'
+    implementation 'androidx.multidex:multidex:2.0.0'
     implementation 'com.jakewharton:butterknife:7.0.1'
     annotationProcessor 'com.jakewharton:butterknife:7.0.1'
     implementation 'io.reactivex:rxandroid:1.2.1'
@@ -143,7 +134,6 @@ dependencies {
         exclude group: 'com.android.support', module: 'recyclerview-v7'
     }
     implementation 'com.bigkoo:svprogresshud:1.0.6'
-    implementation 'com.afollestad:easyvideoplayer:0.3.0'
     //视频播放库
     implementation 'com.github.mcxtzhang:SuspensionIndexBar:V1.0.0'
     //城市列表
@@ -164,4 +154,5 @@ dependencies {
     implementation 'com.contrarywind:wheelview:4.0.9'
     implementation 'com.github.xuexiangjys:XUpdate:1.1.6'
     implementation 'com.zhy:okhttputils:2.6.2'
+    implementation 'com.afollestad.material-dialogs:core:0.9.1.0'
 }

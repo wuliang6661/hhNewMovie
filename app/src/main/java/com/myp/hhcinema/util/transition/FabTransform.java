@@ -16,6 +16,8 @@
 
 package com.myp.hhcinema.util.transition;
 
+import static android.view.View.MeasureSpec.makeMeasureSpec;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
@@ -30,12 +32,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.content.ContextCompat;
 import android.transition.Transition;
 import android.transition.TransitionValues;
 import android.util.AttributeSet;
@@ -45,14 +41,18 @@ import android.view.ViewGroup;
 import android.view.ViewOutlineProvider;
 import android.view.animation.Interpolator;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 
 import com.myp.hhcinema.R;
 import com.myp.hhcinema.util.AnimUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.view.View.MeasureSpec.makeMeasureSpec;
 
 /**
  * A transition between a FAB & another surface using a circular reveal moving along an arc.

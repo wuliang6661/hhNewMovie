@@ -1,6 +1,7 @@
 package com.myp.hhcinema.widget.superadapter.base;
 
-import android.support.v4.util.SparseArrayCompat;
+
+import androidx.collection.SparseArrayCompat;
 
 import com.myp.hhcinema.widget.superadapter.ViewHolder;
 

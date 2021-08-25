@@ -3,8 +3,6 @@ package com.myp.hhcinema.ui.orderconfrim;
 import android.app.AlertDialog;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,13 +12,15 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+
 import com.myp.hhcinema.R;
 import com.myp.hhcinema.api.HttpInterfaceIml;
 import com.myp.hhcinema.base.BaseActivity;
 import com.myp.hhcinema.base.MyApplication;
 import com.myp.hhcinema.entity.OrderBO;
 import com.myp.hhcinema.jpush.MessageEvent;
-import com.myp.hhcinema.ui.personorder.notpaymessage.NotPayMessageActivity;
 import com.myp.hhcinema.ui.personorder.ordermessage.OrderMessageActivity;
 import com.myp.hhcinema.util.AppManager;
 import com.myp.hhcinema.util.CimemaUtils;

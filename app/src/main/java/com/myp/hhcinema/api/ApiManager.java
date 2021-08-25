@@ -1,9 +1,9 @@
 package com.myp.hhcinema.api;
 
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.util.Log;
-import android.webkit.WebSettings;
+
+import androidx.annotation.RequiresApi;
 
 import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
@@ -107,7 +107,7 @@ public class ApiManager {
         return mRetrofit.create(service);
     }
 
-    Interceptor headInterceptor =new Interceptor() {
+    Interceptor headInterceptor = new Interceptor() {
         @Override
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request()
@@ -136,10 +136,9 @@ public class ApiManager {
                     for (String param : post) {
                         String key = param.split("=")[0];
                         String value;
-                        try {
+                        if (param.split("=").length >= 2) {
                             value = param.split("=")[1];
-                        }catch (Exception e){
-                            e.printStackTrace();
+                        } else {
                             value = "";
                         }
                         keyAndValues.put(key, value);

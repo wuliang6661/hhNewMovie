@@ -10,19 +10,19 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.bigkoo.alertview.AlertView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.myp.hhcinema.R;
 import com.myp.hhcinema.api.HttpInterface;
 import com.myp.hhcinema.api.HttpInterfaceIml;
@@ -31,12 +31,9 @@ import com.myp.hhcinema.entity.CinemaBo;
 import com.myp.hhcinema.jpush.MessageEvent;
 import com.myp.hhcinema.mvp.MVPBaseActivity;
 import com.myp.hhcinema.service.update.UpdateManager;
-import com.myp.hhcinema.ui.hotsellprodect.HotSellActivity;
 import com.myp.hhcinema.ui.main.home.HomeFragment;
-import com.myp.hhcinema.ui.main.hotwire.HotwireFragment;
 import com.myp.hhcinema.ui.main.member.MemberFragment;
 import com.myp.hhcinema.ui.moviesseltor.SeltormovieActivity;
-import com.myp.hhcinema.ui.personorder.notpaymessage.NotPayMessageActivity;
 import com.myp.hhcinema.util.AppManager;
 import com.myp.hhcinema.util.CustomUpdateParser;
 import com.myp.hhcinema.util.LogUtils;
@@ -484,6 +481,7 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
                 }
             });
             commit.setOnClickListener(new View.OnClickListener() {
+                @RequiresApi(api = Build.VERSION_CODES.O)
                 @Override
                 public void onClick(View view) {
                     //事件

@@ -1,17 +1,17 @@
 package com.myp.hhcinema.base;
 
+import static com.xuexiang.xupdate.entity.UpdateError.ERROR.CHECK_NO_NEW_VERSION;
+
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
-import android.support.multidex.MultiDex;
 import android.widget.Toast;
 
+import androidx.multidex.MultiDex;
+
 import com.baidu.mapapi.SDKInitializer;
-import com.myp.hhcinema.BuildConfig;
-import com.myp.hhcinema.R;
 import com.myp.hhcinema.config.ConditionEnum;
 import com.myp.hhcinema.config.LocalConfiguration;
 import com.myp.hhcinema.entity.CinemaBo;
@@ -45,8 +45,6 @@ import java.util.List;
 import cat.ereza.customactivityoncrash.CustomActivityOnCrash;
 import cn.jpush.android.api.JPushInterface;
 import cn.sharesdk.framework.ShareSDK;
-
-import static com.xuexiang.xupdate.entity.UpdateError.ERROR.CHECK_NO_NEW_VERSION;
 
 /**
  * 作者 by wuliang 时间 16/10/26.
@@ -93,10 +91,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-//        CustomActivityOnCrash.install(this);
-//        CustomActivityOnCrash.setErrorActivityClass(LoginActivity.class);
-//        CustomActivityOnCrash.setShowErrorDetails(true);
-//        CustomActivityOnCrash.setDefaultErrorActivityDrawable(R.drawable.logo);
+        CustomActivityOnCrash.install(this);
         getVersionCode();
         /***初始化工具类*/
         Utils.init(this);

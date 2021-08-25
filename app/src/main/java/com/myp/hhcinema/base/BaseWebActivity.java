@@ -2,7 +2,7 @@ package com.myp.hhcinema.base;
 
 import android.graphics.PixelFormat;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.myp.hhcinema.widget.webview.WebAppInterface;
 import com.myp.hhcinema.widget.webview.WebClient;

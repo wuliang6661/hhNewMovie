@@ -3,8 +3,6 @@ package com.myp.hhcinema.ui.message;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +11,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.myp.hhcinema.R;
@@ -26,7 +27,6 @@ import com.myp.hhcinema.ui.foodorderlist.FoodOrderActivity;
 import com.myp.hhcinema.ui.membercard.MemberCardActivity;
 import com.myp.hhcinema.ui.personcoupon.PersonCouponActivity;
 import com.myp.hhcinema.ui.personorder.PersonOrderActivity;
-import com.myp.hhcinema.ui.prodectorder.ProdectOrderActivity;
 import com.myp.hhcinema.util.ScreenUtils;
 import com.myp.hhcinema.util.ToastUtils;
 import com.myp.hhcinema.widget.superadapter.CommonAdapter;

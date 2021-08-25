@@ -2,7 +2,6 @@ package com.myp.hhcinema.ui.orderconfrim;
 
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -15,8 +14,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -36,6 +33,9 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.alipay.sdk.app.PayTask;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -50,18 +50,13 @@ import com.myp.hhcinema.entity.LockSeatsBO;
 import com.myp.hhcinema.entity.MerchandBO;
 import com.myp.hhcinema.entity.MoviesByCidBO;
 import com.myp.hhcinema.entity.MoviesSessionBO;
-import com.myp.hhcinema.entity.OrderBO;
 import com.myp.hhcinema.entity.PayBO;
 import com.myp.hhcinema.entity.PayResult;
-import com.myp.hhcinema.entity.UserCouponBO;
 import com.myp.hhcinema.entity.WXPayBO;
 import com.myp.hhcinema.jpush.MessageEvent;
 import com.myp.hhcinema.mvp.MVPBaseActivity;
 import com.myp.hhcinema.ui.membercard.MemberCardActivity;
-import com.myp.hhcinema.ui.moviesseattable.SeatTableActivity;
-import com.myp.hhcinema.ui.moviessession.SessionActivity;
 import com.myp.hhcinema.ui.pay.PayActivity;
-import com.myp.hhcinema.ui.personorder.notpaymessage.NotPayMessageActivity;
 import com.myp.hhcinema.util.AppManager;
 import com.myp.hhcinema.util.LogUtils;
 import com.myp.hhcinema.util.MathExtend;
@@ -79,7 +74,6 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -1034,24 +1028,25 @@ public class ConfrimOrderActivity extends MVPBaseActivity<ConfrimOrderContract.V
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         String ticketId;
         String prodectId;
-        switch (requestCode){
+        switch (requestCode) {
             case 1:
                 int disprice = 0;
                 try {
                     disprice = data.getExtras().getInt("discount");
                     ticketCouponId = data.getExtras().getInt("id");
 
-                    if (ticketCouponId > 0){
+                    if (ticketCouponId > 0) {
                         ticketId = String.valueOf(ticketCouponId);
-                    }else {
+                    } else {
                         ticketId = "0";
                     }
-                    if (prodectCouponId > 0){
+                    if (prodectCouponId > 0) {
                         prodectId = String.valueOf(prodectCouponId);
                         rlActivity.setVisibility(View.GONE);
-                    }else {
+                    } else {
                         prodectId = "0";
                         if (modifyInfo.getMerOrder() != null) {
                             if (Double.valueOf(modifyInfo.getMerOrder().getTotalPrice()) -
@@ -1065,25 +1060,25 @@ public class ConfrimOrderActivity extends MVPBaseActivity<ConfrimOrderContract.V
                         }
                     }
                     String activityPriceNum;
-                    if (lockSeatsBO.getActivityPriceNum() == null){
+                    if (lockSeatsBO.getActivityPriceNum() == null) {
                         activityPriceNum = "";
-                    }else {
+                    } else {
                         activityPriceNum = lockSeatsBO.getActivityPriceNum();
                     }
                     if (MyApplication.cinemaBo != null) {
                         String changePayType;
-                        if (payType == 1){
+                        if (payType == 1) {
                             changePayType = "2";
-                        }else {
+                        } else {
                             changePayType = "1";
                         }
-                        mPresenter.modifyOrderPrice(changePayType,reduceActivityId,sessionBO.getDxId(),MyApplication.cinemaBo.getCinemaId(),sessionBO.getHallId(),sessionBO.getCineMovieNum()
-                                ,lockSeatsBO.getPartnerPrice(), lockSeatsBO.getMarketPrice(), activityPriceNum,
+                        mPresenter.modifyOrderPrice(changePayType, reduceActivityId, sessionBO.getDxId(), MyApplication.cinemaBo.getCinemaId(), sessionBO.getHallId(), sessionBO.getCineMovieNum()
+                                , lockSeatsBO.getPartnerPrice(), lockSeatsBO.getMarketPrice(), activityPriceNum,
                                 String.valueOf(ticketNum), lockSeatsBO.getBeforeTicketPrice(), lockSeatsBO.getTotalDisprice(), modifyInfo.getPayPrice(),
                                 ticketId, prodectId, merchandiseInfo, String.valueOf(MyApplication.user.getId()), String.valueOf(sessionBO.getPreferPrice()),
-                                String.valueOf(sessionBO.getGlobalPreferPrice()), String.valueOf(sessionBO.getGlobalCanBuyNum()),false,true);
+                                String.valueOf(sessionBO.getGlobalPreferPrice()), String.valueOf(sessionBO.getGlobalCanBuyNum()), false, true);
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
@@ -1093,16 +1088,16 @@ public class ConfrimOrderActivity extends MVPBaseActivity<ConfrimOrderContract.V
                     disprice2 = data.getExtras().getInt("discount");
                     prodectCouponId = data.getExtras().getInt("id");
 
-                    if (ticketCouponId > 0){
+                    if (ticketCouponId > 0) {
                         ticketId = String.valueOf(ticketCouponId);
-                    }else {
+                    } else {
                         ticketId = "0";
                     }
-                    if (prodectCouponId > 0){
+                    if (prodectCouponId > 0) {
                         prodectId = String.valueOf(prodectCouponId);
                         activityPrice.setText("-0元");
                         rlActivity.setVisibility(View.GONE);
-                    }else {
+                    } else {
                         prodectId = "0";
                         txtProdectCouponNum.setText("去使用");
                         if (modifyInfo.getMerOrder() != null) {
@@ -1114,29 +1109,29 @@ public class ConfrimOrderActivity extends MVPBaseActivity<ConfrimOrderContract.V
                                 activityPrice.setText(String.format("-%s元", Double.valueOf(modifyInfo.getMerOrder().getTotalPrice()) -
                                         modifyInfo.getMerOrder().getBeforeTicketPrice()));
                             }
-                        }else {
+                        } else {
                             rlActivity.setVisibility(View.GONE);
                         }
                     }
                     String activityPriceNum2;
-                    if (lockSeatsBO.getActivityPriceNum() == null){
+                    if (lockSeatsBO.getActivityPriceNum() == null) {
                         activityPriceNum2 = "";
-                    }else {
+                    } else {
                         activityPriceNum2 = lockSeatsBO.getActivityPriceNum();
                     }
                     if (MyApplication.cinemaBo != null) {
                         String changePayType;
-                        if (payType == 1){
+                        if (payType == 1) {
                             changePayType = "2";
-                        }else {
+                        } else {
                             changePayType = "1";
                         }
-                        mPresenter.modifyOrderPrice(changePayType,reduceActivityId,sessionBO.getDxId(),MyApplication.cinemaBo.getCinemaId(),sessionBO.getHallId(),sessionBO.getCineMovieNum(),lockSeatsBO.getPartnerPrice(), lockSeatsBO.getMarketPrice(), activityPriceNum2,
+                        mPresenter.modifyOrderPrice(changePayType, reduceActivityId, sessionBO.getDxId(), MyApplication.cinemaBo.getCinemaId(), sessionBO.getHallId(), sessionBO.getCineMovieNum(), lockSeatsBO.getPartnerPrice(), lockSeatsBO.getMarketPrice(), activityPriceNum2,
                                 String.valueOf(ticketNum), lockSeatsBO.getBeforeTicketPrice(), lockSeatsBO.getTotalDisprice(), modifyInfo.getPayPrice(),
                                 ticketId, prodectId, merchandiseInfo, String.valueOf(MyApplication.user.getId()), String.valueOf(sessionBO.getPreferPrice()),
-                                String.valueOf(sessionBO.getGlobalPreferPrice()), String.valueOf(sessionBO.getGlobalCanBuyNum()),false,true);
+                                String.valueOf(sessionBO.getGlobalPreferPrice()), String.valueOf(sessionBO.getGlobalCanBuyNum()), false, true);
                     }
-                }catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;

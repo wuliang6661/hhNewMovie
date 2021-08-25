@@ -3,18 +3,22 @@ package com.myp.hhcinema.ui.selectorcity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.mcxtzhang.indexlib.IndexBar.widget.IndexBar;
 import com.mcxtzhang.indexlib.suspension.SuspensionDecoration;
 import com.myp.hhcinema.R;
 import com.myp.hhcinema.entity.CityBO;
 import com.myp.hhcinema.mvp.MVPBaseActivity;
 import com.myp.hhcinema.util.LogUtils;
+
 import java.util.List;
+
 import butterknife.Bind;
 
 

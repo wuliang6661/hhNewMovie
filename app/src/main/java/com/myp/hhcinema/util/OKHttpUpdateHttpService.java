@@ -4,7 +4,8 @@ package com.myp.hhcinema.util;
  * Created by Witness on 2020/7/14
  * Describe:
  */
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.xuexiang.xupdate.proxy.IUpdateHttpService;
 import com.xuexiang.xupdate.utils.UpdateUtils;

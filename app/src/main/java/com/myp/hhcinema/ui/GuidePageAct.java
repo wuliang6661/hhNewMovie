@@ -5,13 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.myp.hhcinema.R;
@@ -20,12 +21,10 @@ import com.myp.hhcinema.base.BaseActivity;
 import com.myp.hhcinema.base.MyApplication;
 import com.myp.hhcinema.config.ConditionEnum;
 import com.myp.hhcinema.entity.AdBO;
-import com.myp.hhcinema.entity.CardBgBO;
 import com.myp.hhcinema.entity.UserBO;
 import com.myp.hhcinema.ui.main.MainActivity;
 import com.myp.hhcinema.util.SPUtils;
 import com.myp.hhcinema.util.StringUtils;
-import com.myp.hhcinema.util.ToastUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.Timer;

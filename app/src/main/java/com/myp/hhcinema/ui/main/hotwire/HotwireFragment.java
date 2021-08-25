@@ -3,8 +3,8 @@ package com.myp.hhcinema.ui.main.hotwire;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentTransaction;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +15,6 @@ import com.myp.hhcinema.R;
 import com.myp.hhcinema.base.BaseFragment;
 import com.myp.hhcinema.ui.main.PlayfulWebFragment;
 import com.myp.hhcinema.ui.main.hotwire.consultationFragment.consultationFragment;
-import com.myp.hhcinema.ui.main.hotwire.welfareFragment.welfareFragment;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

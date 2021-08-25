@@ -2,14 +2,14 @@ package com.myp.hhcinema.ui;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.widget.Toast;
 
-import com.afollestad.easyvideoplayer.EasyVideoCallback;
-import com.afollestad.easyvideoplayer.EasyVideoPlayer;
 import com.myp.hhcinema.R;
 import com.myp.hhcinema.base.BaseActivity;
 import com.myp.hhcinema.util.LogUtils;
+import com.myp.hhcinema.widget.easyvideoplayer.EasyVideoCallback;
+import com.myp.hhcinema.widget.easyvideoplayer.EasyVideoPlayer;
 
 import butterknife.Bind;
 

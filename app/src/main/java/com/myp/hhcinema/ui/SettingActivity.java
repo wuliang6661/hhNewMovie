@@ -88,9 +88,14 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             case R.id.secretBtn:
                 startActivity(new Intent(SettingActivity.this,InfoActivity.class));
                 break;
+            case R.id.login_out:
 
+                break;
         }
     }
+
+
+
 
 
 

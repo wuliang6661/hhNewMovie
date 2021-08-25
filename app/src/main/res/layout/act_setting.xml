@@ -118,6 +118,41 @@
 
 
     <RelativeLayout
+        android:id="@+id/login_out"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_top"
+            android:text="注销账号"
+            android:textColor="@color/text_big"
+            android:textSize="@dimen/text_big" />
+
+        <ImageView
+            android:layout_width="6dp"
+            android:layout_height="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_top"
+            android:background="@drawable/xijiantou" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/margin_top"
+            android:background="@color/line_bg" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:background="@color/white"
@@ -147,8 +182,8 @@
         android:layout_width="match_parent"
         android:layout_height="37dp"
         android:layout_marginLeft="22dp"
-        android:layout_marginRight="22dp"
         android:layout_marginTop="56dp"
+        android:layout_marginRight="22dp"
         android:background="@drawable/button_yello"
         android:text="退出登录"
         android:textColor="@color/white"

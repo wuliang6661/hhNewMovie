@@ -64,7 +64,7 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
     BottmTabItem home;
     @Bind(R.id.haowan)
     BottmTabItem haowan;
-//    @Bind(R.id.prodect)
+    //    @Bind(R.id.prodect)
 //    BottmTabItem prodect;
     @Bind(R.id.store)
     BottmTabItem store;
@@ -72,13 +72,13 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
     BottmTabItem huiyuan;
 
     HomeFragment homeFragment;
-//    PlayfulFragment playfulFragment;
+    //    PlayfulFragment playfulFragment;
     MemberFragment memberFragment;
-//    HotwireFragment hotwireFragment;
+    //    HotwireFragment hotwireFragment;
     PlayfulWebFragment playfulWebFragment;//互动
     StoreFragment storeFragment;//积分商城
 
-//    HotSellActivity hotSellFragment;
+    //    HotSellActivity hotSellFragment;
     BaiduMapLoctionUtils baiduMapLoctionUtils;
 
     UpdateManager updateManager;
@@ -106,11 +106,11 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
 //        prodect.setOnClickListener(this);
         huiyuan.setOnClickListener(this);
         baiduMapLoctionUtils = new BaiduMapLoctionUtils();
-        getPermission();
+
 //        updateManager = new UpdateManager(this, "main");   //检查更新
 //        updateManager.checkUpdate();
         XUpdate.newBuild(this)
-                .updateUrl(HttpInterface.URL+ "/version/version.json")
+                .updateUrl(HttpInterface.URL + "/version/version.json")
                 .updateParser(new CustomUpdateParser()) //设置自定义的版本更新解析器
                 .update();
 
@@ -131,16 +131,54 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
         try {
             MyApplication.badgeNum = 0;   //点击打开app时取消角标显示
             ShortcutBadger.removeCountOrThrow(this);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
+        if (!MyApplication.spUtils.getBoolean("getLocationPermission")) {
+            showPricessDialog();
+        }
     }
+
+
+    private void showPricessDialog() {
+        LayoutInflater factory = LayoutInflater.from(this);//提示框
+        final View view = factory.inflate(R.layout.dialog_order_pay, null);//这里必须是final的
+        TextView cancle = view.findViewById(R.id.off_commit);
+        TextView commit = view.findViewById(R.id.commit);
+        TextView title = view.findViewById(R.id.title);
+        TextView message = view.findViewById(R.id.message);
+        title.setText("需要获取定位、内存权限来获取您最近的影院");
+        message.setText("是否获取？");
+        cancle.setText("否");
+        commit.setText("是");
+        final AlertDialog dialog = new AlertDialog.Builder(this).create();
+        cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                MyApplication.spUtils.put("getLocationPermission", true);
+            }
+        });
+        commit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //事件
+                dialog.dismiss();
+                getPermission();
+            }
+        });
+        dialog.setView(view);
+        dialog.show();
+    }
+
 
     /**
      * 检查定位权限
      */
     private void getPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED
+                || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -151,14 +189,6 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
         } else {
             startLocation();
         }
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
-                            Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    1);
-        }
     }
 
     @Override
@@ -166,17 +196,17 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
             int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 1) {   //授权成功
-            if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                    && grantResults[1] == PackageManager.PERMISSION_GRANTED){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
                 startLocation();
                 MyApplication.locateSuccess = true;
-            }else if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_DENIED
-                    && grantResults[1] == PackageManager.PERMISSION_DENIED){
+            } else if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_DENIED
+                    && grantResults[1] == PackageManager.PERMISSION_DENIED) {
                 Intent intent = new Intent(MainActivity.this, SeltormovieActivity.class);
-                startActivityForResult(intent,1);
+                startActivityForResult(intent, 1);
                 MyApplication.locateSuccess = false;
             }
-        }else {
+        } else {
             loadDefaltCinemas();
         }
     }
@@ -194,7 +224,7 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
                     MyApplication.cinemaBo = cinemaBo;
                     MyApplication.spUtils.put("cinemaId", cinemaBo.getCinemaId());
                     homeFragment.setCinemaInfo();
-                }else {
+                } else {
                     loadCinemas();
                 }
                 break;
@@ -215,7 +245,6 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
     }
 
 
-
     /**
      * 定位方法调用
      */
@@ -231,7 +260,7 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
             public void onEroorLocation() {
                 if (MyApplication.spUtils.getString("cinemaId") != null) {
                     loadCinemas();
-                }else {
+                } else {
                     Intent intent = new Intent(MainActivity.this, SeltormovieActivity.class);
                     startActivity(intent);
                 }
@@ -244,16 +273,16 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
         if (MyApplication.spUtils.getString("cinemaId") != null &&
                 MyApplication.spUtils.getString("cinemaId").equals(cinemaIdBOs.get(0).getCinemaId())) {
             homeFragment.setCinemaNameStr(cinemaIdBOs.get(0));
-        }else if (MyApplication.spUtils.getString("cinemaId") == null){
+        } else if (MyApplication.spUtils.getString("cinemaId") == null) {
             homeFragment.setCinemaNameStr(cinemaIdBOs.get(0));
-        }else {
+        } else {
             LayoutInflater factory = LayoutInflater.from(this);//提示框
             final View view = factory.inflate(R.layout.dialog_order_pay, null);//这里必须是final的
             TextView cancle = (TextView) view.findViewById(R.id.off_commit);
             TextView commit = (TextView) view.findViewById(R.id.commit);
             TextView title = view.findViewById(R.id.title);
             TextView message = view.findViewById(R.id.message);
-            title.setText(String.format("检测到\"%s\"距离您较近",cinemaIdBOs.get(0).getCinemaName()));
+            title.setText(String.format("检测到\"%s\"距离您较近", cinemaIdBOs.get(0).getCinemaName()));
             message.setText("是否切换？");
             cancle.setText("取消");
             commit.setText("切换");
@@ -280,7 +309,7 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
     }
 
 
-    private void loadCinemas(){
+    private void loadCinemas() {
         HttpInterfaceIml.cinemaList("", "", "").subscribe(new Subscriber<List<CinemaBo>>() {
             @Override
             public void onCompleted() {
@@ -289,7 +318,7 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
 
             @Override
             public void onError(Throwable e) {
-               ToastUtils.showShortToast(e.getMessage());
+                ToastUtils.showShortToast(e.getMessage());
             }
 
             @Override
@@ -301,7 +330,7 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
                             break;
                         }
                     }
-                }else {
+                } else {
                     homeFragment.setCinemaNameStr(s.get(0));
                 }
             }
@@ -312,7 +341,7 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
     /**
      * 定位失败获取默认第一个影院
      */
-    private void loadDefaltCinemas(){
+    private void loadDefaltCinemas() {
         HttpInterfaceIml.cinemaList("", "", "").subscribe(new Subscriber<List<CinemaBo>>() {
             @Override
             public void onCompleted() {
@@ -441,11 +470,12 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
 
     /**
      * 显示Fragment
+     *
      * @param messageEvent
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(MessageEvent messageEvent){
-        if (messageEvent.getMessageType().equals("showMain")){
+    public void onEvent(MessageEvent messageEvent) {
+        if (messageEvent.getMessageType().equals("showMain")) {
             if (messageEvent.getPassValue().equals("yes")) {
                 goToFragment(homeFragment);
                 home.setSelectState(true);
@@ -454,14 +484,14 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
                 huiyuan.setSelectState(false);
 //                prodect.setSelectState(false);
             }
-        }else if (messageEvent.getMessageType().equals("showstore")){
+        } else if (messageEvent.getMessageType().equals("showstore")) {
             goToFragment(storeFragment);
             home.setSelectState(false);
             haowan.setSelectState(false);
             store.setSelectState(true);
             huiyuan.setSelectState(false);
 //            prodect.setSelectState(false);
-        }else if (messageEvent.getMessageType().equals("update")){//Android8.0安装应用需要获取安装未知应用权限
+        } else if (messageEvent.getMessageType().equals("update")) {//Android8.0安装应用需要获取安装未知应用权限
             LayoutInflater factory = LayoutInflater.from(this);//提示框
             final View view = factory.inflate(R.layout.dialog_order_pay, null);//这里必须是final的
             TextView cancle = (TextView) view.findViewById(R.id.off_commit);
@@ -496,14 +526,15 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
 
     /**
      * 开启设置安装未知来源应用权限界面
+     *
      * @param context
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void startInstallPermissionSettingActivity(Context context) {
-        if (context == null){
+        if (context == null) {
             return;
         }
         Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
-        ((Activity)context).startActivityForResult(intent,200);
+        ((Activity) context).startActivityForResult(intent, 200);
     }
 }

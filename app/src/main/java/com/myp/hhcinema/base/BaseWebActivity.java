@@ -60,7 +60,7 @@ public abstract class BaseWebActivity extends BaseActivity {
         webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
         webSetting.setAllowFileAccess(true);
         webSetting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-        webSetting.setSupportZoom(true);
+        webSetting.setSupportZoom(false);
         webSetting.setBuiltInZoomControls(true);
         webSetting.setUseWideViewPort(true);
         webSetting.setSupportMultipleWindows(true);

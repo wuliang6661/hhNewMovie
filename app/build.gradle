@@ -5,10 +5,10 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.myp.hhcinema"
-        minSdkVersion 17
+        minSdkVersion 26
         targetSdkVersion 30
-        versionCode  29
-        versionName "2.3.3"
+        versionCode 30
+        versionName "2.3.4"
         multiDexEnabled true
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
 
@@ -17,7 +17,7 @@ android {
             abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86', 'x86_64', 'mips', 'mips64'
         }
         manifestPlaceholders = [
-                JPUSH_PKGNAME:  applicationId,
+                JPUSH_PKGNAME: applicationId,
                 JPUSH_APPKEY : "61b0e07a185786ba2a1d27aa", //JPush上注册的包名对应的appkey:https://www.jiguang.cn/push
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
@@ -68,6 +68,10 @@ android {
         abortOnError false
     }
 
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
 }
 
 allprojects {

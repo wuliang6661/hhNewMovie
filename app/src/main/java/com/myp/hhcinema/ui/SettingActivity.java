@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -78,6 +79,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         aboutLayout.setOnClickListener(this);
         cleanApp.setOnClickListener(this);
         secretBtn.setOnClickListener(this);
+        zhuxiao.setOnClickListener(this);
     }
 
     @Override
@@ -132,7 +134,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         //此处设置位置窗体大小
         dialog.getWindow().setGravity(Gravity.CENTER);
         dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        dialog.getWindow().setLayout(SizeUtils.dp2px(250), SizeUtils.dp2px(300));
+        dialog.getWindow().setLayout(SizeUtils.dp2px(250), ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 
 

@@ -30,10 +30,11 @@ import androidx.viewpager.widget.ViewPager;
 import com.myp.hhcinema.R;
 import com.myp.hhcinema.base.BaseFragment;
 import com.myp.hhcinema.base.MyApplication;
+import com.myp.hhcinema.config.LocalConfiguration;
 import com.myp.hhcinema.entity.CinemaBo;
 import com.myp.hhcinema.jpush.MessageEvent;
 import com.myp.hhcinema.ui.FragmentPaerAdapter;
-import com.myp.hhcinema.ui.InfoActivity;
+import com.myp.hhcinema.ui.WebViewActivity;
 import com.myp.hhcinema.ui.main.home.movieslist.MoviesListFragment;
 import com.myp.hhcinema.ui.main.home.nextmovies.NextMoviesFragment;
 import com.myp.hhcinema.ui.message.MessageActivity;
@@ -264,8 +265,9 @@ public class HomeFragment extends BaseFragment implements
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View widget) {
-                Intent intent = new Intent(getActivity(), InfoActivity.class);
-                startActivity(intent);
+                Bundle bundle = new Bundle();
+                bundle.putString("url", LocalConfiguration.YINSI_H5);
+                gotoActivity(WebViewActivity.class, bundle, false);
             }
             @Override
             public void updateDrawState(TextPaint ds) {
@@ -282,8 +284,9 @@ public class HomeFragment extends BaseFragment implements
         ClickableSpan clickableSpan2 = new ClickableSpan() {//隐私声明
             @Override
             public void onClick(View widget) {
-                Intent intent = new Intent(getActivity(), InfoActivity.class);
-                startActivity(intent);
+                Bundle bundle = new Bundle();
+                bundle.putString("url", LocalConfiguration.YINSI_H5);
+                gotoActivity(WebViewActivity.class, bundle, false);
             }
 
             @Override
@@ -295,7 +298,7 @@ public class HomeFragment extends BaseFragment implements
             }
 
         };
-        spannableBuilder.setSpan(clickableSpan2, 16, 22, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//        spannableBuilder.setSpan(clickableSpan2, 16, 22, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         txt.setText(spannableBuilder);
         txt.setHighlightColor(getResources().getColor(android.R.color.transparent));//点击后的背景颜色，Android4.0以上默认是淡绿色，低版本的是黄色

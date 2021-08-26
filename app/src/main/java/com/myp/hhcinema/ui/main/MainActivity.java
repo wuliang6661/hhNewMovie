@@ -116,6 +116,11 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
 
         EventBus.getDefault().register(this);
         loadCinemas();
+        if (!MyApplication.spUtils.getBoolean("getLocationPermission")) {
+            showPricessDialog();
+        }else{
+            LogUtils.showToast("请到设置-应用中开启定位权限，获取最近影院");
+        }
     }
 
     @Override
@@ -133,9 +138,6 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
             ShortcutBadger.removeCountOrThrow(this);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        if (!MyApplication.spUtils.getBoolean("getLocationPermission")) {
-            showPricessDialog();
         }
     }
 

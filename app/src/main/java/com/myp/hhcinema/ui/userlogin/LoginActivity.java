@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,10 +27,12 @@ import com.mob.tools.utils.UIHandler;
 import com.myp.hhcinema.R;
 import com.myp.hhcinema.base.MyApplication;
 import com.myp.hhcinema.config.ConditionEnum;
+import com.myp.hhcinema.config.LocalConfiguration;
 import com.myp.hhcinema.entity.UserBO;
 import com.myp.hhcinema.entity.threelandingBo;
 import com.myp.hhcinema.jpush.MessageEvent;
 import com.myp.hhcinema.mvp.MVPBaseActivity;
+import com.myp.hhcinema.ui.WebViewActivity;
 import com.myp.hhcinema.ui.phonecode.phonecode2;
 import com.myp.hhcinema.ui.userforwordpass.VerifyActivity;
 import com.myp.hhcinema.ui.userregister.RegisterActivity;
@@ -84,14 +87,18 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
     ImageView qq;
     @Bind(R.id.weixin)
     ImageView weixin;
+    @Bind(R.id.checkbox)
+    CheckBox checkBox;
+    @Bind(R.id.xieyi)
+    TextView xieyi;
 
     String phone;
     String password;
     LoginUtils utils;
     private ProgressDialog progressDialog;
-    private int MSG_ACTION_CCALLBACK=0;
+    private int MSG_ACTION_CCALLBACK = 0;
 
-    private  int style;
+    private int style;
     private String weibouserId;
     private String qquserId;
     private String weixinuserId;
@@ -154,8 +161,8 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
     }
 
     @Override
-    public void getUserid(threelandingBo s,int styles) {
-        if(s.getStatus()==1){
+    public void getUserid(threelandingBo s, int styles) {
+        if (s.getStatus() == 1) {
             Intent intent = new Intent();
             intent.putExtra("user", s.getData());
             MyApplication.user = s.getData();
@@ -164,11 +171,11 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
             setResult(1, intent);
             EventBus.getDefault().post(new MessageEvent("PlayfulWebFragment", "yes"));//发给StoreFragment
             finish();
-        }else {
-            if(s.getStatus()==0){
+        } else {
+            if (s.getStatus() == 0) {
                 LogUtils.showToast(s.getMessage());
-            }else {
-                Intent phonecode=  new Intent(LoginActivity.this,phonecode2.class);
+            } else {
+                Intent phonecode = new Intent(LoginActivity.this, phonecode2.class);
                 phonecode.putExtra("style", styles);
                 phonecode.putExtra("userId", userId);
                 phonecode.putExtra("userName", userName);
@@ -199,34 +206,50 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
                 gotoActivity(VerifyActivity.class, false);
                 break;
             case R.id.weibo:    //新浪微博登陆
+                if (!checkBox.isChecked()) {
+                    LogUtils.showToast("请同意协议《汇和影城隐私条款》!");
+                    return;
+                }
                 Platform sina = ShareSDK.getPlatform(SinaWeibo.NAME);
-                style=1;
+                style = 1;
                 sina.setPlatformActionListener(this);
                 sina.SSOSetting(false);
                 authorize(sina, 3);
                 break;
             case R.id.qq:    //QQ登陆
+                if (!checkBox.isChecked()) {
+                    LogUtils.showToast("请同意协议《汇和影城隐私条款》!");
+                    return;
+                }
                 Platform qq = ShareSDK.getPlatform(QQ.NAME);
-                style=2;
+                style = 2;
                 qq.setPlatformActionListener(this);
                 qq.SSOSetting(false);
                 authorize(qq, 2);
                 break;
             case R.id.weixin:   //微信登陆
-                if(isWeixinAvilible(this)) {
+                if (!checkBox.isChecked()) {
+                    LogUtils.showToast("请同意协议《汇和影城隐私条款》!");
+                    return;
+                }
+                if (isWeixinAvilible(this)) {
                     Platform wechat = ShareSDK.getPlatform(Wechat.NAME);
                     wechat.setPlatformActionListener(this);
                     wechat.SSOSetting(false);
-                    style=3;
+                    style = 3;
                     authorize(wechat, 1);
-                }else{
-                    Toast.makeText(this, "您还没有安装微信，请先安装微信客户端",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "您还没有安装微信，请先安装微信客户端", Toast.LENGTH_SHORT).show();
                 }
-
-
+                break;
+            case R.id.xieyi:
+                Bundle bundle = new Bundle();
+                bundle.putString("url", LocalConfiguration.YINSI_H5);
+                gotoActivity(WebViewActivity.class, bundle, false);
                 break;
         }
     }
+
     public static boolean isWeixinAvilible(Context context) {
         final PackageManager packageManager = context.getPackageManager();// 获取packagemanager
         List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);// 获取所有已安装程序的包信息
@@ -240,6 +263,7 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
         }
         return false;
     }
+
     private void authorize(Platform plat, int type) {
         switch (type) {
             case 1:
@@ -257,7 +281,6 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
         }
         plat.showUser(null);//授权并获取用户信息
     }
-
 
 
     private void showProgressDialog(String s) {
@@ -283,6 +306,10 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
         }
         if (password.length() < 6 || password.length() > 20) {
             LogUtils.showToast("密码长度要在6-20位!");
+            return false;
+        }
+        if (!checkBox.isChecked()) {
+            LogUtils.showToast("请同意协议《汇和影城隐私条款》!");
             return false;
         }
         return true;
@@ -327,6 +354,7 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
     public void onCancel(Platform platform, int i) {
         progressDialog.dismiss();
     }
+
     @Override
     public boolean handleMessage(Message message) {
         if (progressDialog != null)
@@ -337,7 +365,7 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
                 userId = platform.getDb().getUserId();//获取用户账号
                 userName = platform.getDb().getUserName();//获取用户名字
                 userIcon = platform.getDb().getUserIcon();//获取用户头像
-                Log.d("sdfkasjdfkl", "setDatas: "+userIcon);
+                Log.d("sdfkasjdfkl", "setDatas: " + userIcon);
                 userGender = platform.getDb().getUserGender();
                 if (style == 1) {
                     wxUserId = null;
@@ -354,7 +382,7 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
                     wbUserId = null;
                     qqUserId = null;
                 }
-                mPresenter.userLoginid(wxUserId, wbUserId, qqUserId,style);
+                mPresenter.userLoginid(wxUserId, wbUserId, qqUserId, style);
             }
             break;
 

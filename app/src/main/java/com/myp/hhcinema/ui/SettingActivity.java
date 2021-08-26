@@ -3,22 +3,26 @@ package com.myp.hhcinema.ui;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
+
 import com.myp.hhcinema.R;
 import com.myp.hhcinema.api.HttpInterfaceIml;
 import com.myp.hhcinema.base.BaseActivity;
 import com.myp.hhcinema.base.MyApplication;
 import com.myp.hhcinema.config.ConditionEnum;
+import com.myp.hhcinema.config.LocalConfiguration;
 import com.myp.hhcinema.entity.CommonBean;
 import com.myp.hhcinema.jpush.MessageEvent;
 import com.myp.hhcinema.util.DataCleanManager;
 import com.myp.hhcinema.util.LogUtils;
+import com.myp.hhcinema.util.SizeUtils;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -44,6 +48,8 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     TextView cleanSize;
     @Bind(R.id.secretBtn)
     RelativeLayout secretBtn;
+    @Bind(R.id.login_out)
+            RelativeLayout zhuxiao;
 
 
     boolean isLogout = false;
@@ -61,6 +67,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
         if (MyApplication.isLogin == ConditionEnum.NOLOGIN) {
             logOutBtn.setVisibility(View.GONE);
+            zhuxiao.setVisibility(View.GONE);
         }
         try {
             cleanSize.setText(DataCleanManager.getTotalCacheSize(this));
@@ -86,17 +93,47 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 cleanApp();
                 break;
             case R.id.secretBtn:
-                startActivity(new Intent(SettingActivity.this,InfoActivity.class));
+                Bundle bundle = new Bundle();
+                bundle.putString("url", LocalConfiguration.YINSI_H5);
+                gotoActivity(WebViewActivity.class, bundle, false);
                 break;
             case R.id.login_out:
-
+                showHearthWikiDialog();
                 break;
         }
     }
 
 
 
-
+    /**
+     * 显示健康百科答题活动奖品弹窗
+     */
+    private void showHearthWikiDialog() {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+        View view = getLayoutInflater().inflate(R.layout.dialog_loginout, null);
+        TextView cancle= view.findViewById(R.id.cancle);
+        TextView commit = view.findViewById(R.id.commit);
+        builder.setView(view);//设置login_layout为对话提示框
+        builder.setCancelable(true);//设置为不可取消
+        final androidx.appcompat.app.AlertDialog dialog = builder.create();
+        cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        commit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logOut();
+            }
+        });
+        dialog.show();//显示Dialog对话框
+        //此处设置位置窗体大小
+        dialog.getWindow().setGravity(Gravity.CENTER);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        dialog.getWindow().setLayout(SizeUtils.dp2px(250), SizeUtils.dp2px(300));
+    }
 
 
     /**

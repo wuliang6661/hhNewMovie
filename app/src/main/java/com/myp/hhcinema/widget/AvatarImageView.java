@@ -26,10 +26,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -46,6 +48,8 @@ import android.widget.Toast;
 
 import com.bigkoo.alertview.AlertView;
 import com.bigkoo.alertview.OnItemClickListener;
+import com.myp.hhcinema.base.MyApplication;
+import com.myp.hhcinema.util.LogUtils;
 import com.myp.hhcinema.util.PhotoUtils;
 
 import java.io.File;
@@ -296,36 +300,43 @@ public class AvatarImageView extends ImageView {
         super.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (MyApplication.spUtils.getBoolean("getUserImg")) {
+                    LogUtils.showToast("请到设置-应用中开启拍照、相册权限！");
+                    return;
+                }
                 //看是否需要申请权限
                 if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.CAMERA)
                         != PackageManager.PERMISSION_GRANTED) {
                     //申请WRITE_EXTERNAL_STORAGE权限
                     ActivityCompat.requestPermissions((Activity) mContext, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE},
                             WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
-                }
-                new AlertView.Builder().setContext(mContext)
-                        .setStyle(AlertView.Style.ActionSheet)
-                        .setTitle(null)
-                        .setMessage(null)
-                        .setCancelText("取消")
-                        .setDestructive("打开相册", "拍照")
-                        .setOthers(null)
-                        .setOnItemClickListener(new OnItemClickListener() {
-                            @Override
-                            public void onItemClick(Object o, int position) {
-                                switch (position) {
-                                    case 0://相册
-                                        startActionPickCrop();
-                                        break;
-                                    case 1://相机
-                                        startActionCamera(picUri);
-                                        break;
+                    MyApplication.spUtils.put("getUserImg", true);
+                } else {
+                    new AlertView.Builder().setContext(mContext)
+                            .setStyle(AlertView.Style.ActionSheet)
+                            .setTitle(null)
+                            .setMessage(null)
+                            .setCancelText("取消")
+                            .setDestructive("打开相册", "拍照")
+                            .setOthers(null)
+                            .setOnItemClickListener(new OnItemClickListener() {
+                                @Override
+                                public void onItemClick(Object o, int position) {
+                                    switch (position) {
+                                        case 0://相册
+                                            startActionPickCrop();
+                                            break;
+                                        case 1://相机
+                                            startActionCamera(picUri);
+                                            break;
+                                    }
                                 }
-                            }
-                        })
-                        .build()
-                        .setCancelable(true)
-                        .show();
+                            })
+                            .build()
+                            .setCancelable(true)
+                            .show();
+                }
+
 //                ActionSheet.createBuilder(AvatarImageView.this.mContext, fragmentManager)
 //                        .setCancelButtonTitle("取消")
 //                        .setOtherButtonTitles("打开相册", "拍照")
@@ -481,6 +492,7 @@ public class AvatarImageView extends ImageView {
 //        ((Activity) this.mContext).startActivityForResult(intentCamera,
 //                AvatarImageView.REQUEST_IMAGE_AFTER_CROP);
     }
+
     public void startActionCropa(Uri input, Uri output) {
         Intent intentCamera = new Intent("com.android.camera.action.CROP");
         intentCamera.setDataAndType(input, "image/*");// 源文件地址
@@ -499,6 +511,7 @@ public class AvatarImageView extends ImageView {
         ((Activity) this.mContext).startActivityForResult(intentCamera,
                 AvatarImageView.REQUEST_IMAGE_AFTER_CROP);
     }
+
     @Override
     public void setOnClickListener(OnClickListener l) {
         //使点击事件设置无效

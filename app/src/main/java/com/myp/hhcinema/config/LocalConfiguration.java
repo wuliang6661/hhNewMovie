@@ -36,4 +36,9 @@ public class LocalConfiguration {
     public static int isCanBuy = 1;//卖品是否可以点击
     public static String message = "";//提示信息
 
+    /**
+     * 隐私协议
+     */
+    public static final String YINSI_H5= "https://hhyy.happydoit.com/yinsi/yinsi.htm";
+
 }

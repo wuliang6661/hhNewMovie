@@ -110,10 +110,6 @@ public class HomeFragment extends BaseFragment implements
         viewpager.setAdapter(adapter);
         viewpager.setScanScroll(false);
         setListener();
-        if (MyApplication.spUtils.getString("read") == null
-                || !MyApplication.spUtils.getString("read").equals("yes")) {
-            infoDialog();
-        }
     }
 
     /**
@@ -246,90 +242,5 @@ public class HomeFragment extends BaseFragment implements
     }
 
 
-    /**
-     *  协议
-     */
-    private void infoDialog() {
-        // 构造对话框
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(),R.style.AlertDialog);
-        final LayoutInflater inflater = LayoutInflater.from(getActivity());
-        View v = inflater.inflate(R.layout.information_dialog_layout, null);
-        TextView cancle = v.findViewById(R.id.cancle);
-        TextView sure = v.findViewById(R.id.sure);
-        TextView txt = v.findViewById(R.id.txt2);
 
-        // SpannableStringBuilder 用法
-        SpannableStringBuilder spannableBuilder = new SpannableStringBuilder();
-        spannableBuilder.append(txt.getText().toString());
-        //设置部分文字点击事件
-        ClickableSpan clickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(View widget) {
-                Bundle bundle = new Bundle();
-                bundle.putString("url", LocalConfiguration.YINSI_H5);
-                gotoActivity(WebViewActivity.class, bundle, false);
-            }
-            @Override
-            public void updateDrawState(TextPaint ds) {
-//                设定的是span超链接的文本颜色，而不是点击后的颜色
-                ds.setColor(Color.parseColor("#009FFF"));
-                ds.setUnderlineText(false);    //去除超链接的下划线
-                ds.clearShadowLayer();//清除阴影
-            }
-
-        };
-        spannableBuilder.setSpan(clickableSpan, 0, 15, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        //设置部分文字点击事件
-        ClickableSpan clickableSpan2 = new ClickableSpan() {//隐私声明
-            @Override
-            public void onClick(View widget) {
-                Bundle bundle = new Bundle();
-                bundle.putString("url", LocalConfiguration.YINSI_H5);
-                gotoActivity(WebViewActivity.class, bundle, false);
-            }
-
-            @Override
-            public void updateDrawState(TextPaint ds) {
-//                设定的是span超链接的文本颜色，而不是点击后的颜色
-                ds.setColor(Color.parseColor("#009FFF"));
-                ds.setUnderlineText(false);    //去除超链接的下划线
-                ds.clearShadowLayer();//清除阴影
-            }
-
-        };
-//        spannableBuilder.setSpan(clickableSpan2, 16, 22, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        txt.setText(spannableBuilder);
-        txt.setHighlightColor(getResources().getColor(android.R.color.transparent));//点击后的背景颜色，Android4.0以上默认是淡绿色，低版本的是黄色
-        txt.setMovementMethod(LinkMovementMethod.getInstance());
-
-        builder.setView(v);
-        builder.setCancelable(true);
-        final Dialog noticeDialog = builder.create();
-        noticeDialog.getWindow().setGravity(Gravity.CENTER);
-        noticeDialog.setCancelable(false);
-        noticeDialog.show();
-
-        cancle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                noticeDialog.dismiss();
-                System.exit(0);
-            }
-        });
-
-        sure.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                noticeDialog.dismiss();
-                MyApplication.spUtils.put("read", "yes");
-            }
-        });
-
-        WindowManager.LayoutParams layoutParams = noticeDialog.getWindow().getAttributes();
-        layoutParams.width = (int)(ScreenUtils.getScreenWidth()*0.75);
-        layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-        noticeDialog.getWindow().setAttributes(layoutParams);
-    }
 }

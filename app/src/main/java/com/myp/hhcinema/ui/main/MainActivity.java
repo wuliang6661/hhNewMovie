@@ -4,15 +4,25 @@ package com.myp.hhcinema.ui.main;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,16 +37,19 @@ import com.myp.hhcinema.R;
 import com.myp.hhcinema.api.HttpInterface;
 import com.myp.hhcinema.api.HttpInterfaceIml;
 import com.myp.hhcinema.base.MyApplication;
+import com.myp.hhcinema.config.LocalConfiguration;
 import com.myp.hhcinema.entity.CinemaBo;
 import com.myp.hhcinema.jpush.MessageEvent;
 import com.myp.hhcinema.mvp.MVPBaseActivity;
 import com.myp.hhcinema.service.update.UpdateManager;
+import com.myp.hhcinema.ui.WebViewActivity;
 import com.myp.hhcinema.ui.main.home.HomeFragment;
 import com.myp.hhcinema.ui.main.member.MemberFragment;
 import com.myp.hhcinema.ui.moviesseltor.SeltormovieActivity;
 import com.myp.hhcinema.util.AppManager;
 import com.myp.hhcinema.util.CustomUpdateParser;
 import com.myp.hhcinema.util.LogUtils;
+import com.myp.hhcinema.util.ScreenUtils;
 import com.myp.hhcinema.util.ToastUtils;
 import com.myp.hhcinema.util.baidumap.BaiduMapLoctionUtils;
 import com.xuexiang.xupdate.XUpdate;
@@ -116,10 +129,9 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
 
         EventBus.getDefault().register(this);
         loadCinemas();
-        if (!MyApplication.spUtils.getBoolean("getLocationPermission")) {
-            showPricessDialog();
-        }else{
-            LogUtils.showToast("请到设置-应用中开启定位权限，获取最近影院");
+        if (MyApplication.spUtils.getString("read") == null
+                || !MyApplication.spUtils.getString("read").equals("yes")) {
+            infoDialog();
         }
     }
 
@@ -538,5 +550,99 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
         }
         Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES);
         ((Activity) context).startActivityForResult(intent, 200);
+    }
+
+
+    /**
+     * 协议
+     */
+    private void infoDialog() {
+        // 构造对话框
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialog);
+        final LayoutInflater inflater = LayoutInflater.from(this);
+        View v = inflater.inflate(R.layout.information_dialog_layout, null);
+        TextView cancle = v.findViewById(R.id.cancle);
+        TextView sure = v.findViewById(R.id.sure);
+        TextView txt = v.findViewById(R.id.txt2);
+
+        // SpannableStringBuilder 用法
+        SpannableStringBuilder spannableBuilder = new SpannableStringBuilder();
+        spannableBuilder.append(txt.getText().toString());
+        //设置部分文字点击事件
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                Bundle bundle = new Bundle();
+                bundle.putString("url", LocalConfiguration.YINSI_H5);
+                gotoActivity(WebViewActivity.class, bundle, false);
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+//                设定的是span超链接的文本颜色，而不是点击后的颜色
+                ds.setColor(Color.parseColor("#009FFF"));
+                ds.setUnderlineText(false);    //去除超链接的下划线
+                ds.clearShadowLayer();//清除阴影
+            }
+
+        };
+        spannableBuilder.setSpan(clickableSpan, 0, 15, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        //设置部分文字点击事件
+        ClickableSpan clickableSpan2 = new ClickableSpan() {//隐私声明
+            @Override
+            public void onClick(View widget) {
+                Bundle bundle = new Bundle();
+                bundle.putString("url", LocalConfiguration.YINSI_H5);
+                gotoActivity(WebViewActivity.class, bundle, false);
+            }
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+//                设定的是span超链接的文本颜色，而不是点击后的颜色
+                ds.setColor(Color.parseColor("#009FFF"));
+                ds.setUnderlineText(false);    //去除超链接的下划线
+                ds.clearShadowLayer();//清除阴影
+            }
+
+        };
+//        spannableBuilder.setSpan(clickableSpan2, 16, 22, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        txt.setText(spannableBuilder);
+        txt.setHighlightColor(getResources().getColor(android.R.color.transparent));//点击后的背景颜色，Android4.0以上默认是淡绿色，低版本的是黄色
+        txt.setMovementMethod(LinkMovementMethod.getInstance());
+
+        builder.setView(v);
+        builder.setCancelable(true);
+        final Dialog noticeDialog = builder.create();
+        noticeDialog.getWindow().setGravity(Gravity.CENTER);
+        noticeDialog.setCancelable(false);
+        noticeDialog.show();
+
+        cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                noticeDialog.dismiss();
+                System.exit(0);
+            }
+        });
+
+        sure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                noticeDialog.dismiss();
+                MyApplication.spUtils.put("read", "yes");
+                if (!MyApplication.spUtils.getBoolean("getLocationPermission")) {
+                    showPricessDialog();
+                } else {
+                    LogUtils.showToast("请到设置-应用中开启定位权限，获取最近影院");
+                }
+            }
+        });
+
+        WindowManager.LayoutParams layoutParams = noticeDialog.getWindow().getAttributes();
+        layoutParams.width = (int) (ScreenUtils.getScreenWidth() * 0.75);
+        layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        noticeDialog.getWindow().setAttributes(layoutParams);
     }
 }

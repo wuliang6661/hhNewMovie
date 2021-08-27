@@ -225,8 +225,8 @@ public class RegisterActivity extends MVPBaseActivity<RegisterContract.View, Reg
             LogUtils.showToast("两次输入的密码不一致!");
             return false;
         }
-        if (!isCheck) {
-            LogUtils.showToast("请同意《汇和时代影城服务条款》!");
+        if (!checkbox.isChecked()) {
+            LogUtils.showToast("请同意《汇和时代影城隐私协议》!");
             return false;
         }
         return true;

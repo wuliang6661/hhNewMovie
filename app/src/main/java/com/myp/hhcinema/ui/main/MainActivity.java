@@ -632,7 +632,7 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
             public void onClick(View view) {
                 noticeDialog.dismiss();
                 MyApplication.spUtils.put("read", "yes");
-                if (!MyApplication.spUtils.getBoolean("getLocationPermission")) {
+                if (!MyApplication.spUtils.getBoolean("getLocationPermission",false)) {
                     showPricessDialog();
                 } else {
                     LogUtils.showToast("请到设置-应用中开启定位权限，获取最近影院");

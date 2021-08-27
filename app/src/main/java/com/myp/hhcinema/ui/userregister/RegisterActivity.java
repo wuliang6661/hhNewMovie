@@ -4,7 +4,6 @@ package com.myp.hhcinema.ui.userregister;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -13,16 +12,19 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.myp.hhcinema.R;
 import com.myp.hhcinema.api.HttpInterfaceIml;
 import com.myp.hhcinema.base.MyApplication;
+import com.myp.hhcinema.config.LocalConfiguration;
 import com.myp.hhcinema.entity.PicVerificBO;
 import com.myp.hhcinema.entity.UserBO;
 import com.myp.hhcinema.mvp.MVPBaseActivity;
-import com.myp.hhcinema.ui.phonecode.phonecode2;
-import com.myp.hhcinema.ui.userforwordpass.VerifyActivity;
+import com.myp.hhcinema.ui.WebViewActivity;
 import com.myp.hhcinema.util.LogUtils;
 import com.myp.hhcinema.util.MD5;
 import com.myp.hhcinema.util.RegexUtils;
@@ -66,6 +68,8 @@ public class RegisterActivity extends MVPBaseActivity<RegisterContract.View, Reg
     EditText picCode;//图文验证
     @Bind(R.id.ivCode)
     ImageView ivCode;//图文验证
+    @Bind(R.id.xieyi)
+    TextView xieYi;
 
     String phone = "";
     String password = "";
@@ -90,6 +94,14 @@ public class RegisterActivity extends MVPBaseActivity<RegisterContract.View, Reg
         radioLayout.setOnCheckedChangeListener(this);
         registerButton.setOnClickListener(this);
         ivCode.setOnClickListener(this);
+        xieYi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putString("url", LocalConfiguration.YINSI_H5);
+                gotoActivity(WebViewActivity.class, bundle, false);
+            }
+        });
         getPicVersition();
     }
 
@@ -102,10 +114,10 @@ public class RegisterActivity extends MVPBaseActivity<RegisterContract.View, Reg
         switch (v.getId()) {
             case R.id.get_verification:  //获取验证码
                 if (RegexUtils.isMobileExact(phone)) {
-                    if (StringUtils.isEmpty(picCode.getText().toString())){
+                    if (StringUtils.isEmpty(picCode.getText().toString())) {
                         LogUtils.showToast("图文验证码错误！");
-                    }else {
-                        mPresenter.loadVersition(phone,picCode.getText().toString());
+                    } else {
+                        mPresenter.loadVersition(phone, picCode.getText().toString());
                     }
                 } else {
                     LogUtils.showToast("请输入正确的手机号");
@@ -115,7 +127,7 @@ public class RegisterActivity extends MVPBaseActivity<RegisterContract.View, Reg
                 if (isSubmit()) {
                     if (MyApplication.cinemaBo != null) {
                         mPresenter.loadRegisterUser(MyApplication.cinemaBo.getCinemaId(), phone, MD5.strToMd5Low32(password), editVersition, sex);
-                    }else {
+                    } else {
                         ToastUtils.showShortToast("请先选择影院");
                     }
                 }
@@ -123,8 +135,8 @@ public class RegisterActivity extends MVPBaseActivity<RegisterContract.View, Reg
             case R.id.ivCode:
                 getPicVersition();
                 break;
-                default:
-                    break;
+            default:
+                break;
         }
     }
 
@@ -209,7 +221,7 @@ public class RegisterActivity extends MVPBaseActivity<RegisterContract.View, Reg
             LogUtils.showToast("密码长度要在6-20位!");
             return false;
         }
-        if (!password.equals(passwordConfirm.getText().toString())){
+        if (!password.equals(passwordConfirm.getText().toString())) {
             LogUtils.showToast("两次输入的密码不一致!");
             return false;
         }

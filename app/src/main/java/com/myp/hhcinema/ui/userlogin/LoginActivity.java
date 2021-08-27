@@ -123,6 +123,7 @@ public class LoginActivity extends MVPBaseActivity<LoginContract.View, LoginPres
         weibo.setOnClickListener(this);
         qq.setOnClickListener(this);
         weixin.setOnClickListener(this);
+        xieyi.setOnClickListener(this);
     }
 
     @Override

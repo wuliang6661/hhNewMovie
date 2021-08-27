@@ -86,7 +86,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.log_out_btn:    //退出登录
-                logOut();
+                logOut(false);
                 break;
             case R.id.about_layout:   //关于我们
                 gotoActivity(AboutActivity.class, false);
@@ -107,9 +107,6 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
 
 
 
-    /**
-     * 显示健康百科答题活动奖品弹窗
-     */
     private void showHearthWikiDialog() {
         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.dialog_loginout, null);
@@ -127,7 +124,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         commit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logOut();
+                logOut(true);
             }
         });
         dialog.show();//显示Dialog对话框
@@ -180,7 +177,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     /**
      * 退出登录
      */
-    private void logOut() {
+    private void logOut(boolean isLogoutBtn) {
         HttpInterfaceIml.userLogout().subscribe(new Subscriber<CommonBean>() {
             @Override
             public void onCompleted() {
@@ -194,7 +191,11 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 MyApplication.isLogin = ConditionEnum.NOLOGIN;
                 MyApplication.spUtils.remove("uuid");
                 MyApplication.SESSIONID = null;
-                LogUtils.showToast("已退出登录");
+                if(isLogoutBtn){
+                    LogUtils.showToast("已注销账号");
+                }else{
+                    LogUtils.showToast("已退出登录");
+                }
                 Intent intent = new Intent();
                 intent.putExtra("isLogout", isLogout);
                 setResult(2, intent);
@@ -209,7 +210,11 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                     MyApplication.isLogin = ConditionEnum.NOLOGIN;
                     MyApplication.spUtils.remove("uuid");
                     MyApplication.SESSIONID = null;
-                    LogUtils.showToast("已退出登录");
+                    if(isLogoutBtn){
+                        LogUtils.showToast("已注销账号");
+                    }else{
+                        LogUtils.showToast("已退出登录");
+                    }
                     Intent intent = new Intent();
                     intent.putExtra("isLogout", isLogout);
                     setResult(2, intent);

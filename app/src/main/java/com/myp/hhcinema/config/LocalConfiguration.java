@@ -39,6 +39,6 @@ public class LocalConfiguration {
     /**
      * 隐私协议
      */
-    public static final String YINSI_H5= "https://hhyy.happydoit.com/yinsi/yinsi.htm";
+    public static final String YINSI_H5= "http://hhyy.happydoit.com/yinsi/yinsi.htm";
 
 }

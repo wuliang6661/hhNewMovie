@@ -3,27 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.InfoActivity"
     android:background="#ffffff"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.InfoActivity">
 
     <include layout="@layout/header_layout02" />
 
-    <androidx.core.widget.NestedScrollView
+    <com.tencent.smtt.sdk.WebView
+        android:id="@+id/webview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:text="@string/secret"
-                android:textColor="#333333"
-                android:textSize="15sp"/>
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+        android:layout_height="wrap_content" />
 </LinearLayout>

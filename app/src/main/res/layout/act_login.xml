@@ -55,7 +55,6 @@
             android:layout_marginBottom="35dp">
 
 
-            //weixin,wx,weibo,wb,qq,qq
 
             <ImageView
                 android:id="@+id/weibo"

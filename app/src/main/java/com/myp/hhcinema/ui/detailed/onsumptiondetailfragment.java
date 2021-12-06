@@ -2,7 +2,9 @@ package com.myp.hhcinema.ui.detailed;
 
 import android.app.Activity;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,15 +33,16 @@ import butterknife.ButterKnife;
  */
 
 public class onsumptiondetailfragment extends MVPBaseFragment<onsumptiondetailContract.View, onsumptiondetailPresenter>
-        implements onsumptiondetailContract.View{
+        implements onsumptiondetailContract.View {
     private String cardNum;
     @Bind(R.id.list)
     ListView listview;
     @Bind(R.id.refreshLayout)
     SmartRefreshLayout smartRefreshLayout;
-    private ArrayList<SumptionBo> data= new ArrayList<>();
+    private ArrayList<SumptionBo> data = new ArrayList<>();
     private CommonAdapter<SumptionBo> adapter;
     private int page = 1;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,34 +54,60 @@ public class onsumptiondetailfragment extends MVPBaseFragment<onsumptiondetailCo
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mPresenter.loadcosumption(1,cardNum);
+        mPresenter.loadcosumption(1, cardNum);
         setPullRefresher();
         adapter();
     }
+
     private void adapter() {
         adapter = new CommonAdapter<SumptionBo>(getActivity(),
                 R.layout.item_onsumption, data) {
             @Override
             protected void convert(ViewHolder helper, SumptionBo item, int position) {
-                if (item.getOrderType() != null && item.getOrderType().equals("1")){//卖品
-                    helper.getView(R.id.card_num).setVisibility(View.GONE);
-                    helper.setText(R.id.shijian, item.getPayDate());
-                    helper.setText(R.id.chongzhijine, "-" + String.valueOf(item.getTicketRealPrice()) + "元");
-                }else {
-                    helper.setText(R.id.shijian, item.getPayDate());
-                    helper.setText(R.id.chongzhijine, "-" + String.valueOf(item.getTicketRealPrice()) + "元");
-                    helper.setText(R.id.card_num, "共计" + String.valueOf(item.getTicketNum()) + "张");
+                switch (item.getOrderType()) {
+                    case "0": // 0 购票订单
+                        helper.setText(R.id.shijian, item.getPayDate());
+                        helper.setText(R.id.chongzhijine, "-" + Math.abs(item.getTicketRealPrice()) + "元");
+                        helper.getView(R.id.card_num).setVisibility(View.VISIBLE);
+                        helper.setText(R.id.card_num, "共计" + Math.abs(item.getTicketNum()) + "张");
+                        if (item.getPayStatus() == 1) {
+                            helper.setText(R.id.pay_title, "购票支付成功");
+                        } else if (item.getPayStatus() == 2) {
+                            helper.setText(R.id.pay_title, "购票退款成功");
+                        }
+                        break;
+                    case "1":
+                        helper.getView(R.id.card_num).setVisibility(View.GONE);
+                        helper.setText(R.id.shijian, item.getPayDate());
+                        helper.setText(R.id.chongzhijine, "-" + Math.abs(item.getTicketRealPrice()) + "元");
+                        if (item.getPayStatus() == 1) {
+                            helper.setText(R.id.pay_title, "卖品支付成功");
+                        } else if (item.getPayStatus() == 2) {
+                            helper.setText(R.id.pay_title, "卖品退款成功");
+                        }
+                        break;
+                    case "2":
+                        helper.setText(R.id.shijian, item.getPayDate());
+                        helper.setText(R.id.chongzhijine, "-" + Math.abs(item.getTicketRealPrice()) + "元");
+                        helper.getView(R.id.card_num).setVisibility(View.VISIBLE);
+                        helper.setText(R.id.card_num, "共计" + Math.abs(item.getTicketNum()) + "张");
+                        if (item.getPayStatus() == 1) {
+                            helper.setText(R.id.pay_title, "支付成功");
+                        } else if (item.getPayStatus() == 2) {
+                            helper.setText(R.id.pay_title, "退款成功");
+                        }
+                        break;
                 }
-
             }
         };
     }
-    private void setPullRefresher(){
+
+    private void setPullRefresher() {
         smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
-                mPresenter.loadcosumption(1,cardNum);
-                page=1;
+                mPresenter.loadcosumption(1, cardNum);
+                page = 1;
                 smartRefreshLayout.finishRefresh(1000);
                 refreshlayout.finishRefresh(2000);
             }
@@ -87,12 +116,13 @@ public class onsumptiondetailfragment extends MVPBaseFragment<onsumptiondetailCo
             @Override
             public void onLoadmore(RefreshLayout refreshlayout) {
                 page++;
-                mPresenter.loadcosumption(page,cardNum);
+                mPresenter.loadcosumption(page, cardNum);
                 smartRefreshLayout.finishLoadmore(1000);
                 refreshlayout.finishLoadmore(2000);
             }
         });
     }
+
     @Override
     public void onRequestError(String msg) {
         LogUtils.showToast(msg);
@@ -101,6 +131,7 @@ public class onsumptiondetailfragment extends MVPBaseFragment<onsumptiondetailCo
     @Override
     public void onRequestEnd() {
     }
+
     @Override
     public void getcosumption(List<SumptionBo> sumptionBo, int pages) {
         if (pages == 1) {
@@ -112,6 +143,7 @@ public class onsumptiondetailfragment extends MVPBaseFragment<onsumptiondetailCo
             adapter.setmDatas(data);
         }
     }
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);

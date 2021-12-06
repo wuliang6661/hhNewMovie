@@ -10,6 +10,7 @@ public class SumptionBo implements Serializable {
     private  String   payDate;
 
     private String orderType;
+    private int payStatus;
 
     public String getOrderType() {
         return orderType;
@@ -49,6 +50,14 @@ public class SumptionBo implements Serializable {
 
     public void setTicketRealPrice(double ticketRealPrice) {
         this.ticketRealPrice = ticketRealPrice;
+    }
+
+    public int getPayStatus() {
+        return payStatus;
+    }
+
+    public void setPayStatus(int payStatus) {
+        this.payStatus = payStatus;
     }
 
     private Integer ticketNum;

@@ -33,7 +33,7 @@ public class WXUtils {
      * @param context
      */
     public static void registerWX(Context context) {
-        wxApi = WXAPIFactory.createWXAPI(context, null);
+        wxApi = WXAPIFactory.createWXAPI(context,null);
         wxApi.registerApp(WX_APP_ID);
     }
 

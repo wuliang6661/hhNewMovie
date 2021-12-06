@@ -83,7 +83,7 @@ public class onsumptiondetailfragment extends MVPBaseFragment<onsumptiondetailCo
                         if (item.getPayStatus() == 1) {
                             helper.setText(R.id.pay_title, "卖品支付成功");
                         } else if (item.getPayStatus() == 2) {
-                            helper.setText(R.id.pay_title, "卖品退款成功");
+                            helper.setText(R.id.pay_title, "卖品 退款成功");
                         }
                         break;
                     case "2":

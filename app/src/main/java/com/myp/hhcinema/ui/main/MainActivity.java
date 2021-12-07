@@ -197,7 +197,8 @@ public class MainActivity extends MVPBaseActivity<MainContract.View, MainPresent
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
                             Manifest.permission.ACCESS_FINE_LOCATION,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_PHONE_STATE},
                     1);
             MyApplication.locateSuccess = false;
         } else {

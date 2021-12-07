@@ -75,8 +75,8 @@ import rx.Observable;
  */
 
 public interface HttpInterface {
-      String URL = "http://huihe.happydoit.com";
-//       String URL = "https://hhyy.happydoit.com";//正式服
+//      String URL = "http://huihe.happydoit.com";
+       String URL = "https://hhyy.happydoit.com";//正式服
 
     /**
      * 登陆用户

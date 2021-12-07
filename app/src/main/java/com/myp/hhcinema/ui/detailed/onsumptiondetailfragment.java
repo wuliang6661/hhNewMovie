@@ -2,13 +2,12 @@ package com.myp.hhcinema.ui.detailed;
 
 import android.app.Activity;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
+import androidx.annotation.Nullable;
 
 import com.myp.hhcinema.R;
 import com.myp.hhcinema.entity.SumptionBo;
@@ -83,7 +82,7 @@ public class onsumptiondetailfragment extends MVPBaseFragment<onsumptiondetailCo
                         if (item.getPayStatus() == 1) {
                             helper.setText(R.id.pay_title, "卖品支付成功");
                         } else if (item.getPayStatus() == 2) {
-                            helper.setText(R.id.pay_title, "卖品 退款成功");
+                            helper.setText(R.id.pay_title, "卖品退款成功");
                         }
                         break;
                     case "2":

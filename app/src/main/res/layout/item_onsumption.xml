@@ -76,10 +76,10 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_alignParentRight="true"
                     android:id="@+id/chongzhijine"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:text="+100.00元"
                     android:textColor="@color/text_big"
                     android:textSize="@dimen/text_big" />

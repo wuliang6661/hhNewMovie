@@ -63,12 +63,13 @@ public class onsumptiondetailfragment extends MVPBaseFragment<onsumptiondetailCo
                 R.layout.item_onsumption, data) {
             @Override
             protected void convert(ViewHolder helper, SumptionBo item, int position) {
+                helper.setText(R.id.shijian, item.getPayDate());
+                helper.getView(R.id.card_num).setVisibility(View.VISIBLE);
+                helper.setText(R.id.card_num, "共计" + item.getTicketNum() + "张");
+                helper.setText(R.id.chongzhijine, item.getPayPrice() + "元");
+                helper.setText(R.id.shijian, item.getPayDate());
                 switch (item.getOrderType()) {
                     case "0": // 0 购票订单
-                        helper.setText(R.id.shijian, item.getPayDate());
-                        helper.getView(R.id.card_num).setVisibility(View.VISIBLE);
-                        helper.setText(R.id.card_num, "共计" + item.getTicketNum() + "张");
-                        helper.setText(R.id.chongzhijine, item.getPayPrice() + "元");
                         if (item.getPayStatus() == 1) {
                             helper.setText(R.id.pay_title, "购票支付成功");
                         } else if (item.getPayStatus() == 3) {
@@ -77,7 +78,6 @@ public class onsumptiondetailfragment extends MVPBaseFragment<onsumptiondetailCo
                         break;
                     case "1":
                         helper.getView(R.id.card_num).setVisibility(View.GONE);
-                        helper.setText(R.id.shijian, item.getPayDate());
                         if (item.getPayStatus() == 1) {
                             helper.setText(R.id.pay_title, "卖品支付成功");
                         } else if (item.getPayStatus() == 3) {
@@ -85,9 +85,6 @@ public class onsumptiondetailfragment extends MVPBaseFragment<onsumptiondetailCo
                         }
                         break;
                     case "2":
-                        helper.setText(R.id.shijian, item.getPayDate());
-                        helper.getView(R.id.card_num).setVisibility(View.VISIBLE);
-                        helper.setText(R.id.card_num, "共计" + item.getTicketNum() + "张");
                         if (item.getPayStatus() == 1) {
                             helper.setText(R.id.pay_title, "支付成功");
                         } else if (item.getPayStatus() == 3) {

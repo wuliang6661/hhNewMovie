@@ -98,14 +98,12 @@ public class OrderSurcessActivity extends BaseActivity implements View.OnClickLi
         tag = getIntent().getExtras().getString("tag");
 
         showProgress("加载中...");
-        if (MyApplication.user != null) {
-            queryOrder(String.valueOf(MyApplication.user.getId()), orderNum);
-        }
+        queryOrder(String.valueOf(MyApplication.user.getId()), orderNum);
 
         if (tag.equals("ticket")) {
             llTicket.setVisibility(View.VISIBLE);
             rlPrice.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             llTicket.setVisibility(View.GONE);
             rlPrice.setVisibility(View.GONE);
         }
@@ -145,9 +143,9 @@ public class OrderSurcessActivity extends BaseActivity implements View.OnClickLi
             }
             moviesName.setText(orderBO.getDxMovie().getMovieName());
             moviesAddress.setText(orderBO.getCinemaName() + " " + orderBO.getHallName());
-            if (orderBO.getMovieLanguage() != null){
+            if (orderBO.getMovieLanguage() != null) {
                 moviesType.setText(orderBO.getMovieDimensional() + " " + orderBO.getMovieLanguage() + orderBO.getMovieSize());
-            }else {
+            } else {
                 moviesType.setText(orderBO.getDxMovie().getMovieDimensional() + " " + orderBO.getDxMovie().getMovieLanguage());
             }
             if (!StringUtils.isEmpty(orderBO.getPlayName())) {
@@ -165,7 +163,7 @@ public class OrderSurcessActivity extends BaseActivity implements View.OnClickLi
             } else {
                 Picasso.with(this).load(orderBO.getDxMovie().getPicture()).into(moviesImg);
             }
-        }else {
+        } else {
             if (orderBO.getMerOrder() != null) {
                 showNotice();
                 llProdect.setVisibility(View.VISIBLE);
@@ -198,8 +196,8 @@ public class OrderSurcessActivity extends BaseActivity implements View.OnClickLi
     /**
      * 查询单个订单
      */
-    private void queryOrder(String appUserId ,String orderNum) {
-        HttpInterfaceIml.orderQuery(appUserId,orderNum).subscribe(new Subscriber<OrderBO>() {
+    private void queryOrder(String appUserId, String orderNum) {
+        HttpInterfaceIml.orderQuery(appUserId, orderNum).subscribe(new Subscriber<OrderBO>() {
             @Override
             public void onCompleted() {
                 stopProgress();
@@ -208,11 +206,12 @@ public class OrderSurcessActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void onError(Throwable e) {
                 LogUtils.showToast(e.getMessage());
+                e.printStackTrace();
                 stopProgress();
             }
 
             @Override
-            public void onNext(OrderBO order)   {
+            public void onNext(OrderBO order) {
                 orderBO = order;
                 setData();
             }
@@ -246,7 +245,7 @@ public class OrderSurcessActivity extends BaseActivity implements View.OnClickLi
         return super.onKeyDown(keyCode, event);
     }
 
-    private void showNotice(){
+    private void showNotice() {
         LayoutInflater factory = LayoutInflater.from(this);//提示框
         final View view = factory.inflate(R.layout.dialog_order_pay, null);//这里必须是final的
         TextView title = view.findViewById(R.id.title);

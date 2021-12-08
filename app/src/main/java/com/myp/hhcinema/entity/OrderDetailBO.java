@@ -85,73 +85,72 @@ public class OrderDetailBO implements Serializable {
      * version : 1
      */
 
-    private Object activityCode;
-    private Object activityPriceNum;
+    private String activityCode;
+    private String activityPriceNum;
     private String beforeTicketPrice;
     private String buyResponse;
     private int canRefund;
-    private Object card;
+    private String card;
     private String cineMovieNum;
     private CinemaBean cinema;
     private int cinemaId;
     private String cinemaName;
     private String cinemaNumber;
-    private Object comboList;
-    private Object coupon;
+    private String comboList;
+    private String coupon;
     private String createTime;
-    private Object deleteTime;
+    private String deleteTime;
     private DxAppUserBean dxAppUser;
     private DxMovieBean dxMovie;
-    private Object firstReportTime;
+    private String firstReportTime;
     private int hallId;
     private String hallName;
     private int id;
-    private Object lowestPrice;
+    private String lowestPrice;
     private String marketPrice;
     private String memo;
     private MerOrderBean merOrder;
     private String modifyTime;
     private int orderExpireSecond;
-    private Object orderName;
+    private String orderName;
     private String orderNum;
     private String orderPhone;
     private String orderResponse;
     private int orderType;
-    private Object partnerPrice;
+    private String partnerPrice;
     private String payDate;
-    private Object payNotifyResponse;
-    private Object payOrderNum;
+    private String payNotifyResponse;
+    private String payOrderNum;
     private String payPrice;
-    private Object payResponse;
+    private String payResponse;
     private int payStatus;
     private int payType;
-    private int playId;
     private String playName;
     private String playUpdateTime;
     private String poundage;
     private String qrCode;
     private String ticketEwm;
     private String goodsEwm;
-    private Object refundCode;
+    private String refundCode;
     private int refundCount;
-    private Object refundFee;
+    private String refundFee;
     private double refundHandFee;
-    private Object refundId;
-    private Object refundResponse;
+    private String refundId;
+    private String refundResponse;
     private String refundStatus;
-    private Object refundTime;
+    private String refundTime;
     private int reportStatus;
     private String seatId;
     private String seatLockFlag;
     private int seatStatus;
-    private Object seatTicket;
-    private Object seatTicketList;
+    private String seatTicket;
+    private String seatTicketList;
     private String seats;
     private String serviceCharge;
     private String shareUrl;
     private String subsidyCount;
-    private Object subsidyType;
-    private Object successReportTime;
+    private String subsidyType;
+    private String successReportTime;
     private String ticketFlag1;
     private String ticketFlag2;
     private int ticketNum;
@@ -190,19 +189,19 @@ public class OrderDetailBO implements Serializable {
     }
 
 
-    public Object getActivityCode() {
+    public String getActivityCode() {
         return activityCode;
     }
 
-    public void setActivityCode(Object activityCode) {
+    public void setActivityCode(String activityCode) {
         this.activityCode = activityCode;
     }
 
-    public Object getActivityPriceNum() {
+    public String getActivityPriceNum() {
         return activityPriceNum;
     }
 
-    public void setActivityPriceNum(Object activityPriceNum) {
+    public void setActivityPriceNum(String activityPriceNum) {
         this.activityPriceNum = activityPriceNum;
     }
 
@@ -230,11 +229,11 @@ public class OrderDetailBO implements Serializable {
         this.canRefund = canRefund;
     }
 
-    public Object getCard() {
+    public String getCard() {
         return card;
     }
 
-    public void setCard(Object card) {
+    public void setCard(String card) {
         this.card = card;
     }
 
@@ -278,19 +277,19 @@ public class OrderDetailBO implements Serializable {
         this.cinemaNumber = cinemaNumber;
     }
 
-    public Object getComboList() {
+    public String getComboList() {
         return comboList;
     }
 
-    public void setComboList(Object comboList) {
+    public void setComboList(String comboList) {
         this.comboList = comboList;
     }
 
-    public Object getCoupon() {
+    public String getCoupon() {
         return coupon;
     }
 
-    public void setCoupon(Object coupon) {
+    public void setCoupon(String coupon) {
         this.coupon = coupon;
     }
 
@@ -302,11 +301,11 @@ public class OrderDetailBO implements Serializable {
         this.createTime = createTime;
     }
 
-    public Object getDeleteTime() {
+    public String getDeleteTime() {
         return deleteTime;
     }
 
-    public void setDeleteTime(Object deleteTime) {
+    public void setDeleteTime(String deleteTime) {
         this.deleteTime = deleteTime;
     }
 
@@ -326,11 +325,11 @@ public class OrderDetailBO implements Serializable {
         this.dxMovie = dxMovie;
     }
 
-    public Object getFirstReportTime() {
+    public String getFirstReportTime() {
         return firstReportTime;
     }
 
-    public void setFirstReportTime(Object firstReportTime) {
+    public void setFirstReportTime(String firstReportTime) {
         this.firstReportTime = firstReportTime;
     }
 
@@ -358,11 +357,11 @@ public class OrderDetailBO implements Serializable {
         this.id = id;
     }
 
-    public Object getLowestPrice() {
+    public String getLowestPrice() {
         return lowestPrice;
     }
 
-    public void setLowestPrice(Object lowestPrice) {
+    public void setLowestPrice(String lowestPrice) {
         this.lowestPrice = lowestPrice;
     }
 
@@ -406,11 +405,11 @@ public class OrderDetailBO implements Serializable {
         this.orderExpireSecond = orderExpireSecond;
     }
 
-    public Object getOrderName() {
+    public String getOrderName() {
         return orderName;
     }
 
-    public void setOrderName(Object orderName) {
+    public void setOrderName(String orderName) {
         this.orderName = orderName;
     }
 
@@ -446,11 +445,11 @@ public class OrderDetailBO implements Serializable {
         this.orderType = orderType;
     }
 
-    public Object getPartnerPrice() {
+    public String getPartnerPrice() {
         return partnerPrice;
     }
 
-    public void setPartnerPrice(Object partnerPrice) {
+    public void setPartnerPrice(String partnerPrice) {
         this.partnerPrice = partnerPrice;
     }
 
@@ -462,19 +461,19 @@ public class OrderDetailBO implements Serializable {
         this.payDate = payDate;
     }
 
-    public Object getPayNotifyResponse() {
+    public String getPayNotifyResponse() {
         return payNotifyResponse;
     }
 
-    public void setPayNotifyResponse(Object payNotifyResponse) {
+    public void setPayNotifyResponse(String payNotifyResponse) {
         this.payNotifyResponse = payNotifyResponse;
     }
 
-    public Object getPayOrderNum() {
+    public String getPayOrderNum() {
         return payOrderNum;
     }
 
-    public void setPayOrderNum(Object payOrderNum) {
+    public void setPayOrderNum(String payOrderNum) {
         this.payOrderNum = payOrderNum;
     }
 
@@ -486,11 +485,11 @@ public class OrderDetailBO implements Serializable {
         this.payPrice = payPrice;
     }
 
-    public Object getPayResponse() {
+    public String getPayResponse() {
         return payResponse;
     }
 
-    public void setPayResponse(Object payResponse) {
+    public void setPayResponse(String payResponse) {
         this.payResponse = payResponse;
     }
 
@@ -508,14 +507,6 @@ public class OrderDetailBO implements Serializable {
 
     public void setPayType(int payType) {
         this.payType = payType;
-    }
-
-    public int getPlayId() {
-        return playId;
-    }
-
-    public void setPlayId(int playId) {
-        this.playId = playId;
     }
 
     public String getPlayName() {
@@ -567,11 +558,11 @@ public class OrderDetailBO implements Serializable {
         this.goodsEwm = goodsEwm;
     }
 
-    public Object getRefundCode() {
+    public String getRefundCode() {
         return refundCode;
     }
 
-    public void setRefundCode(Object refundCode) {
+    public void setRefundCode(String refundCode) {
         this.refundCode = refundCode;
     }
 
@@ -583,11 +574,11 @@ public class OrderDetailBO implements Serializable {
         this.refundCount = refundCount;
     }
 
-    public Object getRefundFee() {
+    public String getRefundFee() {
         return refundFee;
     }
 
-    public void setRefundFee(Object refundFee) {
+    public void setRefundFee(String refundFee) {
         this.refundFee = refundFee;
     }
 
@@ -599,19 +590,19 @@ public class OrderDetailBO implements Serializable {
         this.refundHandFee = refundHandFee;
     }
 
-    public Object getRefundId() {
+    public String getRefundId() {
         return refundId;
     }
 
-    public void setRefundId(Object refundId) {
+    public void setRefundId(String refundId) {
         this.refundId = refundId;
     }
 
-    public Object getRefundResponse() {
+    public String getRefundResponse() {
         return refundResponse;
     }
 
-    public void setRefundResponse(Object refundResponse) {
+    public void setRefundResponse(String refundResponse) {
         this.refundResponse = refundResponse;
     }
 
@@ -623,11 +614,11 @@ public class OrderDetailBO implements Serializable {
         this.refundStatus = refundStatus;
     }
 
-    public Object getRefundTime() {
+    public String getRefundTime() {
         return refundTime;
     }
 
-    public void setRefundTime(Object refundTime) {
+    public void setRefundTime(String refundTime) {
         this.refundTime = refundTime;
     }
 
@@ -663,19 +654,19 @@ public class OrderDetailBO implements Serializable {
         this.seatStatus = seatStatus;
     }
 
-    public Object getSeatTicket() {
+    public String getSeatTicket() {
         return seatTicket;
     }
 
-    public void setSeatTicket(Object seatTicket) {
+    public void setSeatTicket(String seatTicket) {
         this.seatTicket = seatTicket;
     }
 
-    public Object getSeatTicketList() {
+    public String getSeatTicketList() {
         return seatTicketList;
     }
 
-    public void setSeatTicketList(Object seatTicketList) {
+    public void setSeatTicketList(String seatTicketList) {
         this.seatTicketList = seatTicketList;
     }
 
@@ -711,19 +702,19 @@ public class OrderDetailBO implements Serializable {
         this.subsidyCount = subsidyCount;
     }
 
-    public Object getSubsidyType() {
+    public String getSubsidyType() {
         return subsidyType;
     }
 
-    public void setSubsidyType(Object subsidyType) {
+    public void setSubsidyType(String subsidyType) {
         this.subsidyType = subsidyType;
     }
 
-    public Object getSuccessReportTime() {
+    public String getSuccessReportTime() {
         return successReportTime;
     }
 
-    public void setSuccessReportTime(Object successReportTime) {
+    public void setSuccessReportTime(String successReportTime) {
         this.successReportTime = successReportTime;
     }
 
@@ -827,31 +818,31 @@ public class OrderDetailBO implements Serializable {
         private String address;
         private String cinemaId;
         private String cinemaName;
-        private Object cinemaNumber;
-        private Object city;
-        private Object cityCode;
+        private String cinemaNumber;
+        private String city;
+        private String cityCode;
         private String contact;
-        private Object country;
+        private String country;
         private String createTime;
-        private Object deleteTime;
-        private Object distance;
-        private Object dxCinemaConfigInsider;
-        private Object dxCinemaConfigOutsider;
-        private Object dxHalls;
-        private Object endTime;
-        private Object id;
-        private Object introduce;
-        private Object latitude;
-        private Object longitude;
-        private Object modifyTime;
-        private Object nextSyncStartTime;
-        private Object province;
-        private Object provinceCode;
-        private Object region;
-        private Object startTime;
-        private Object totalFee;
+        private String deleteTime;
+        private String distance;
+        private String dxCinemaConfigInsider;
+        private String dxCinemaConfigOutsider;
+        private String dxHalls;
+        private String endTime;
+        private String id;
+        private String introduce;
+        private String latitude;
+        private String longitude;
+        private String modifyTime;
+        private String nextSyncStartTime;
+        private String province;
+        private String provinceCode;
+        private String region;
+        private String startTime;
+        private String totalFee;
         private boolean valid;
-        private Object validPeriod;
+        private String validPeriod;
         private int version;
 
         public String getAddress() {
@@ -878,27 +869,27 @@ public class OrderDetailBO implements Serializable {
             this.cinemaName = cinemaName;
         }
 
-        public Object getCinemaNumber() {
+        public String getCinemaNumber() {
             return cinemaNumber;
         }
 
-        public void setCinemaNumber(Object cinemaNumber) {
+        public void setCinemaNumber(String cinemaNumber) {
             this.cinemaNumber = cinemaNumber;
         }
 
-        public Object getCity() {
+        public String getCity() {
             return city;
         }
 
-        public void setCity(Object city) {
+        public void setCity(String city) {
             this.city = city;
         }
 
-        public Object getCityCode() {
+        public String getCityCode() {
             return cityCode;
         }
 
-        public void setCityCode(Object cityCode) {
+        public void setCityCode(String cityCode) {
             this.cityCode = cityCode;
         }
 
@@ -910,11 +901,11 @@ public class OrderDetailBO implements Serializable {
             this.contact = contact;
         }
 
-        public Object getCountry() {
+        public String getCountry() {
             return country;
         }
 
-        public void setCountry(Object country) {
+        public void setCountry(String country) {
             this.country = country;
         }
 
@@ -926,139 +917,139 @@ public class OrderDetailBO implements Serializable {
             this.createTime = createTime;
         }
 
-        public Object getDeleteTime() {
+        public String getDeleteTime() {
             return deleteTime;
         }
 
-        public void setDeleteTime(Object deleteTime) {
+        public void setDeleteTime(String deleteTime) {
             this.deleteTime = deleteTime;
         }
 
-        public Object getDistance() {
+        public String getDistance() {
             return distance;
         }
 
-        public void setDistance(Object distance) {
+        public void setDistance(String distance) {
             this.distance = distance;
         }
 
-        public Object getDxCinemaConfigInsider() {
+        public String getDxCinemaConfigInsider() {
             return dxCinemaConfigInsider;
         }
 
-        public void setDxCinemaConfigInsider(Object dxCinemaConfigInsider) {
+        public void setDxCinemaConfigInsider(String dxCinemaConfigInsider) {
             this.dxCinemaConfigInsider = dxCinemaConfigInsider;
         }
 
-        public Object getDxCinemaConfigOutsider() {
+        public String getDxCinemaConfigOutsider() {
             return dxCinemaConfigOutsider;
         }
 
-        public void setDxCinemaConfigOutsider(Object dxCinemaConfigOutsider) {
+        public void setDxCinemaConfigOutsider(String dxCinemaConfigOutsider) {
             this.dxCinemaConfigOutsider = dxCinemaConfigOutsider;
         }
 
-        public Object getDxHalls() {
+        public String getDxHalls() {
             return dxHalls;
         }
 
-        public void setDxHalls(Object dxHalls) {
+        public void setDxHalls(String dxHalls) {
             this.dxHalls = dxHalls;
         }
 
-        public Object getEndTime() {
+        public String getEndTime() {
             return endTime;
         }
 
-        public void setEndTime(Object endTime) {
+        public void setEndTime(String endTime) {
             this.endTime = endTime;
         }
 
-        public Object getId() {
+        public String getId() {
             return id;
         }
 
-        public void setId(Object id) {
+        public void setId(String id) {
             this.id = id;
         }
 
-        public Object getIntroduce() {
+        public String getIntroduce() {
             return introduce;
         }
 
-        public void setIntroduce(Object introduce) {
+        public void setIntroduce(String introduce) {
             this.introduce = introduce;
         }
 
-        public Object getLatitude() {
+        public String getLatitude() {
             return latitude;
         }
 
-        public void setLatitude(Object latitude) {
+        public void setLatitude(String latitude) {
             this.latitude = latitude;
         }
 
-        public Object getLongitude() {
+        public String getLongitude() {
             return longitude;
         }
 
-        public void setLongitude(Object longitude) {
+        public void setLongitude(String longitude) {
             this.longitude = longitude;
         }
 
-        public Object getModifyTime() {
+        public String getModifyTime() {
             return modifyTime;
         }
 
-        public void setModifyTime(Object modifyTime) {
+        public void setModifyTime(String modifyTime) {
             this.modifyTime = modifyTime;
         }
 
-        public Object getNextSyncStartTime() {
+        public String getNextSyncStartTime() {
             return nextSyncStartTime;
         }
 
-        public void setNextSyncStartTime(Object nextSyncStartTime) {
+        public void setNextSyncStartTime(String nextSyncStartTime) {
             this.nextSyncStartTime = nextSyncStartTime;
         }
 
-        public Object getProvince() {
+        public String getProvince() {
             return province;
         }
 
-        public void setProvince(Object province) {
+        public void setProvince(String province) {
             this.province = province;
         }
 
-        public Object getProvinceCode() {
+        public String getProvinceCode() {
             return provinceCode;
         }
 
-        public void setProvinceCode(Object provinceCode) {
+        public void setProvinceCode(String provinceCode) {
             this.provinceCode = provinceCode;
         }
 
-        public Object getRegion() {
+        public String getRegion() {
             return region;
         }
 
-        public void setRegion(Object region) {
+        public void setRegion(String region) {
             this.region = region;
         }
 
-        public Object getStartTime() {
+        public String getStartTime() {
             return startTime;
         }
 
-        public void setStartTime(Object startTime) {
+        public void setStartTime(String startTime) {
             this.startTime = startTime;
         }
 
-        public Object getTotalFee() {
+        public String getTotalFee() {
             return totalFee;
         }
 
-        public void setTotalFee(Object totalFee) {
+        public void setTotalFee(String totalFee) {
             this.totalFee = totalFee;
         }
 
@@ -1070,11 +1061,11 @@ public class OrderDetailBO implements Serializable {
             this.valid = valid;
         }
 
-        public Object getValidPeriod() {
+        public String getValidPeriod() {
             return validPeriod;
         }
 
-        public void setValidPeriod(Object validPeriod) {
+        public void setValidPeriod(String validPeriod) {
             this.validPeriod = validPeriod;
         }
 
@@ -1124,45 +1115,45 @@ public class OrderDetailBO implements Serializable {
          * wxUserId : null
          */
 
-        private Object age;
+        private String age;
         private String birthday;
-        private Object businessid;
+        private String businessid;
         private String city;
         private String collectNum;
         private String commentNum;
-        private Object country;
+        private String country;
         private String createTime;
         private String deleteTime;
         private int gender;
         private String header;
         private int id;
         private String insider;
-        private Object lastsign;
+        private String lastsign;
         private String loginDate;
         private String mobile;
         private String modifyTime;
         private String nickName;
         private String password;
-        private Object points;
-        private Object province;
-        private Object qqUserId;
-        private Object sign;
-        private Object signdays;
+        private String points;
+        private String province;
+        private String qqUserId;
+        private String sign;
+        private String signdays;
         private String uuid;
         private boolean valid;
         private int version;
-        private Object wantseeNum;
-        private Object watchedNum;
-        private Object wbUserId;
-        private Object wxOpenId;
-        private Object wxUserId;
+        private String wantseeNum;
+        private String watchedNum;
+        private String wbUserId;
+        private String wxOpenId;
+        private String wxUserId;
         private List<?> dxInsiderInfo;
 
-        public Object getAge() {
+        public String getAge() {
             return age;
         }
 
-        public void setAge(Object age) {
+        public void setAge(String age) {
             this.age = age;
         }
 
@@ -1174,11 +1165,11 @@ public class OrderDetailBO implements Serializable {
             this.birthday = birthday;
         }
 
-        public Object getBusinessid() {
+        public String getBusinessid() {
             return businessid;
         }
 
-        public void setBusinessid(Object businessid) {
+        public void setBusinessid(String businessid) {
             this.businessid = businessid;
         }
 
@@ -1206,11 +1197,11 @@ public class OrderDetailBO implements Serializable {
             this.commentNum = commentNum;
         }
 
-        public Object getCountry() {
+        public String getCountry() {
             return country;
         }
 
-        public void setCountry(Object country) {
+        public void setCountry(String country) {
             this.country = country;
         }
 
@@ -1262,11 +1253,11 @@ public class OrderDetailBO implements Serializable {
             this.insider = insider;
         }
 
-        public Object getLastsign() {
+        public String getLastsign() {
             return lastsign;
         }
 
-        public void setLastsign(Object lastsign) {
+        public void setLastsign(String lastsign) {
             this.lastsign = lastsign;
         }
 
@@ -1310,43 +1301,43 @@ public class OrderDetailBO implements Serializable {
             this.password = password;
         }
 
-        public Object getPoints() {
+        public String getPoints() {
             return points;
         }
 
-        public void setPoints(Object points) {
+        public void setPoints(String points) {
             this.points = points;
         }
 
-        public Object getProvince() {
+        public String getProvince() {
             return province;
         }
 
-        public void setProvince(Object province) {
+        public void setProvince(String province) {
             this.province = province;
         }
 
-        public Object getQqUserId() {
+        public String getQqUserId() {
             return qqUserId;
         }
 
-        public void setQqUserId(Object qqUserId) {
+        public void setQqUserId(String qqUserId) {
             this.qqUserId = qqUserId;
         }
 
-        public Object getSign() {
+        public String getSign() {
             return sign;
         }
 
-        public void setSign(Object sign) {
+        public void setSign(String sign) {
             this.sign = sign;
         }
 
-        public Object getSigndays() {
+        public String getSigndays() {
             return signdays;
         }
 
-        public void setSigndays(Object signdays) {
+        public void setSigndays(String signdays) {
             this.signdays = signdays;
         }
 
@@ -1374,43 +1365,43 @@ public class OrderDetailBO implements Serializable {
             this.version = version;
         }
 
-        public Object getWantseeNum() {
+        public String getWantseeNum() {
             return wantseeNum;
         }
 
-        public void setWantseeNum(Object wantseeNum) {
+        public void setWantseeNum(String wantseeNum) {
             this.wantseeNum = wantseeNum;
         }
 
-        public Object getWatchedNum() {
+        public String getWatchedNum() {
             return watchedNum;
         }
 
-        public void setWatchedNum(Object watchedNum) {
+        public void setWatchedNum(String watchedNum) {
             this.watchedNum = watchedNum;
         }
 
-        public Object getWbUserId() {
+        public String getWbUserId() {
             return wbUserId;
         }
 
-        public void setWbUserId(Object wbUserId) {
+        public void setWbUserId(String wbUserId) {
             this.wbUserId = wbUserId;
         }
 
-        public Object getWxOpenId() {
+        public String getWxOpenId() {
             return wxOpenId;
         }
 
-        public void setWxOpenId(Object wxOpenId) {
+        public void setWxOpenId(String wxOpenId) {
             this.wxOpenId = wxOpenId;
         }
 
-        public Object getWxUserId() {
+        public String getWxUserId() {
             return wxUserId;
         }
 
-        public void setWxUserId(Object wxUserId) {
+        public void setWxUserId(String wxUserId) {
             this.wxUserId = wxUserId;
         }
 
@@ -1475,13 +1466,13 @@ public class OrderDetailBO implements Serializable {
         private String alias;
         private int cineMovieId;
         private String cineMovieNum;
-        private Object comment;
-        private Object commentRecord;
-        private Object content;
+        private String comment;
+        private String commentRecord;
+        private String content;
         private String country;
         private String createTime;
-        private Object deleteTime;
-        private Object foreignName;
+        private String deleteTime;
+        private String foreignName;
         private int id;
         private String infoUrl;
         private String introduction;
@@ -1494,7 +1485,7 @@ public class OrderDetailBO implements Serializable {
         private String movieName;
         private String movieSize;
         private String movieSubtitle;
-        private Object movieType;
+        private String movieType;
         private String photos;
         private String picture;
         private int playTime;
@@ -1502,16 +1493,16 @@ public class OrderDetailBO implements Serializable {
         private String preVideo;
         private String product;
         private String publisher;
-        private Object score;
-        private Object screenPlanList;
-        private Object sell;
-        private Object shareurl;
+        private String score;
+        private String screenPlanList;
+        private String sell;
+        private String shareurl;
         private String startPlay;
-        private Object stopshow;
-        private Object summary;
-        private Object title;
+        private String stopshow;
+        private String summary;
+        private String title;
         private String type;
-        private Object uniqueName;
+        private String uniqueName;
         private boolean valid;
         private int version;
         private List<?> dxActors;
@@ -1542,27 +1533,27 @@ public class OrderDetailBO implements Serializable {
             this.cineMovieNum = cineMovieNum;
         }
 
-        public Object getComment() {
+        public String getComment() {
             return comment;
         }
 
-        public void setComment(Object comment) {
+        public void setComment(String comment) {
             this.comment = comment;
         }
 
-        public Object getCommentRecord() {
+        public String getCommentRecord() {
             return commentRecord;
         }
 
-        public void setCommentRecord(Object commentRecord) {
+        public void setCommentRecord(String commentRecord) {
             this.commentRecord = commentRecord;
         }
 
-        public Object getContent() {
+        public String getContent() {
             return content;
         }
 
-        public void setContent(Object content) {
+        public void setContent(String content) {
             this.content = content;
         }
 
@@ -1582,19 +1573,19 @@ public class OrderDetailBO implements Serializable {
             this.createTime = createTime;
         }
 
-        public Object getDeleteTime() {
+        public String getDeleteTime() {
             return deleteTime;
         }
 
-        public void setDeleteTime(Object deleteTime) {
+        public void setDeleteTime(String deleteTime) {
             this.deleteTime = deleteTime;
         }
 
-        public Object getForeignName() {
+        public String getForeignName() {
             return foreignName;
         }
 
-        public void setForeignName(Object foreignName) {
+        public void setForeignName(String foreignName) {
             this.foreignName = foreignName;
         }
 
@@ -1694,11 +1685,11 @@ public class OrderDetailBO implements Serializable {
             this.movieSubtitle = movieSubtitle;
         }
 
-        public Object getMovieType() {
+        public String getMovieType() {
             return movieType;
         }
 
-        public void setMovieType(Object movieType) {
+        public void setMovieType(String movieType) {
             this.movieType = movieType;
         }
 
@@ -1758,35 +1749,35 @@ public class OrderDetailBO implements Serializable {
             this.publisher = publisher;
         }
 
-        public Object getScore() {
+        public String getScore() {
             return score;
         }
 
-        public void setScore(Object score) {
+        public void setScore(String score) {
             this.score = score;
         }
 
-        public Object getScreenPlanList() {
+        public String getScreenPlanList() {
             return screenPlanList;
         }
 
-        public void setScreenPlanList(Object screenPlanList) {
+        public void setScreenPlanList(String screenPlanList) {
             this.screenPlanList = screenPlanList;
         }
 
-        public Object getSell() {
+        public String getSell() {
             return sell;
         }
 
-        public void setSell(Object sell) {
+        public void setSell(String sell) {
             this.sell = sell;
         }
 
-        public Object getShareurl() {
+        public String getShareurl() {
             return shareurl;
         }
 
-        public void setShareurl(Object shareurl) {
+        public void setShareurl(String shareurl) {
             this.shareurl = shareurl;
         }
 
@@ -1798,27 +1789,27 @@ public class OrderDetailBO implements Serializable {
             this.startPlay = startPlay;
         }
 
-        public Object getStopshow() {
+        public String getStopshow() {
             return stopshow;
         }
 
-        public void setStopshow(Object stopshow) {
+        public void setStopshow(String stopshow) {
             this.stopshow = stopshow;
         }
 
-        public Object getSummary() {
+        public String getSummary() {
             return summary;
         }
 
-        public void setSummary(Object summary) {
+        public void setSummary(String summary) {
             this.summary = summary;
         }
 
-        public Object getTitle() {
+        public String getTitle() {
             return title;
         }
 
-        public void setTitle(Object title) {
+        public void setTitle(String title) {
             this.title = title;
         }
 
@@ -1830,11 +1821,11 @@ public class OrderDetailBO implements Serializable {
             this.type = type;
         }
 
-        public Object getUniqueName() {
+        public String getUniqueName() {
             return uniqueName;
         }
 
-        public void setUniqueName(Object uniqueName) {
+        public void setUniqueName(String uniqueName) {
             this.uniqueName = uniqueName;
         }
 
@@ -1908,45 +1899,45 @@ public class OrderDetailBO implements Serializable {
          * version : 0
          */
 
-        private Object address;
-        private Object beforeActivityPrice;
+        private String address;
+        private String beforeActivityPrice;
         private String beforeTicketPrice;
-        private Object canRefund;
-        private Object coupon;
+        private String canRefund;
+        private String coupon;
         private String createTime;
-        private Object deleteTime;
+        private String deleteTime;
         private int deliveryType;
         private String disPrice;
-        private Object featureAppNo;
+        private String featureAppNo;
         private int id;
         private int isReady;
-        private Object merTicket;
-        private Object merTicketList;
+        private String merTicket;
+        private String merTicketList;
         private String merchandiseInfo;
-        private Object modifyTime;
-        private Object phone;
-        private Object qrCode;
-        private Object ticketFlag1;
-        private Object ticketFlag2;
+        private String modifyTime;
+        private String phone;
+        private String qrCode;
+        private String ticketFlag1;
+        private String ticketFlag2;
         private int totalNumber;
         private String totalPrice;
         private boolean valid;
         private int version;
         private List<DetailsBean> details;
 
-        public Object getAddress() {
+        public String getAddress() {
             return address;
         }
 
-        public void setAddress(Object address) {
+        public void setAddress(String address) {
             this.address = address;
         }
 
-        public Object getBeforeActivityPrice() {
+        public String getBeforeActivityPrice() {
             return beforeActivityPrice;
         }
 
-        public void setBeforeActivityPrice(Object beforeActivityPrice) {
+        public void setBeforeActivityPrice(String beforeActivityPrice) {
             this.beforeActivityPrice = beforeActivityPrice;
         }
 
@@ -1958,19 +1949,19 @@ public class OrderDetailBO implements Serializable {
             this.beforeTicketPrice = beforeTicketPrice;
         }
 
-        public Object getCanRefund() {
+        public String getCanRefund() {
             return canRefund;
         }
 
-        public void setCanRefund(Object canRefund) {
+        public void setCanRefund(String canRefund) {
             this.canRefund = canRefund;
         }
 
-        public Object getCoupon() {
+        public String getCoupon() {
             return coupon;
         }
 
-        public void setCoupon(Object coupon) {
+        public void setCoupon(String coupon) {
             this.coupon = coupon;
         }
 
@@ -1982,11 +1973,11 @@ public class OrderDetailBO implements Serializable {
             this.createTime = createTime;
         }
 
-        public Object getDeleteTime() {
+        public String getDeleteTime() {
             return deleteTime;
         }
 
-        public void setDeleteTime(Object deleteTime) {
+        public void setDeleteTime(String deleteTime) {
             this.deleteTime = deleteTime;
         }
 
@@ -2006,11 +1997,11 @@ public class OrderDetailBO implements Serializable {
             this.disPrice = disPrice;
         }
 
-        public Object getFeatureAppNo() {
+        public String getFeatureAppNo() {
             return featureAppNo;
         }
 
-        public void setFeatureAppNo(Object featureAppNo) {
+        public void setFeatureAppNo(String featureAppNo) {
             this.featureAppNo = featureAppNo;
         }
 
@@ -2030,19 +2021,19 @@ public class OrderDetailBO implements Serializable {
             this.isReady = isReady;
         }
 
-        public Object getMerTicket() {
+        public String getMerTicket() {
             return merTicket;
         }
 
-        public void setMerTicket(Object merTicket) {
+        public void setMerTicket(String merTicket) {
             this.merTicket = merTicket;
         }
 
-        public Object getMerTicketList() {
+        public String getMerTicketList() {
             return merTicketList;
         }
 
-        public void setMerTicketList(Object merTicketList) {
+        public void setMerTicketList(String merTicketList) {
             this.merTicketList = merTicketList;
         }
 
@@ -2054,43 +2045,43 @@ public class OrderDetailBO implements Serializable {
             this.merchandiseInfo = merchandiseInfo;
         }
 
-        public Object getModifyTime() {
+        public String getModifyTime() {
             return modifyTime;
         }
 
-        public void setModifyTime(Object modifyTime) {
+        public void setModifyTime(String modifyTime) {
             this.modifyTime = modifyTime;
         }
 
-        public Object getPhone() {
+        public String getPhone() {
             return phone;
         }
 
-        public void setPhone(Object phone) {
+        public void setPhone(String phone) {
             this.phone = phone;
         }
 
-        public Object getQrCode() {
+        public String getQrCode() {
             return qrCode;
         }
 
-        public void setQrCode(Object qrCode) {
+        public void setQrCode(String qrCode) {
             this.qrCode = qrCode;
         }
 
-        public Object getTicketFlag1() {
+        public String getTicketFlag1() {
             return ticketFlag1;
         }
 
-        public void setTicketFlag1(Object ticketFlag1) {
+        public void setTicketFlag1(String ticketFlag1) {
             this.ticketFlag1 = ticketFlag1;
         }
 
-        public Object getTicketFlag2() {
+        public String getTicketFlag2() {
             return ticketFlag2;
         }
 
-        public void setTicketFlag2(Object ticketFlag2) {
+        public void setTicketFlag2(String ticketFlag2) {
             this.ticketFlag2 = ticketFlag2;
         }
 
@@ -2155,7 +2146,7 @@ public class OrderDetailBO implements Serializable {
             private int id;
             private ItemComboBean itemCombo;
             private MerchandiseBean merchandise;
-            private Object modifyTime;
+            private String modifyTime;
             private int number;
             private String price;
             private String totalPrice;
@@ -2203,11 +2194,11 @@ public class OrderDetailBO implements Serializable {
                 this.merchandise = merchandise;
             }
 
-            public Object getModifyTime() {
+            public String getModifyTime() {
                 return modifyTime;
             }
 
-            public void setModifyTime(Object modifyTime) {
+            public void setModifyTime(String modifyTime) {
                 this.modifyTime = modifyTime;
             }
 
@@ -2293,9 +2284,9 @@ public class OrderDetailBO implements Serializable {
                 private int cinemaId;
                 private int counterPrice;
                 private String createTime;
-                private Object deleteTime;
+                private String deleteTime;
                 private int dxId;
-                private Object goodsNum;
+                private String goodsNum;
                 private int id;
                 private String imageUrl;
                 private int inventory;
@@ -2303,7 +2294,7 @@ public class OrderDetailBO implements Serializable {
                 private int listOrder;
                 private String modifyTime;
                 private String name;
-                private Object number;
+                private String number;
                 private String onlinePrice;
                 private int originalPrice;
                 private int overInventorySellFlag;
@@ -2354,11 +2345,11 @@ public class OrderDetailBO implements Serializable {
                     this.createTime = createTime;
                 }
 
-                public Object getDeleteTime() {
+                public String getDeleteTime() {
                     return deleteTime;
                 }
 
-                public void setDeleteTime(Object deleteTime) {
+                public void setDeleteTime(String deleteTime) {
                     this.deleteTime = deleteTime;
                 }
 
@@ -2370,11 +2361,11 @@ public class OrderDetailBO implements Serializable {
                     this.dxId = dxId;
                 }
 
-                public Object getGoodsNum() {
+                public String getGoodsNum() {
                     return goodsNum;
                 }
 
-                public void setGoodsNum(Object goodsNum) {
+                public void setGoodsNum(String goodsNum) {
                     this.goodsNum = goodsNum;
                 }
 
@@ -2434,11 +2425,11 @@ public class OrderDetailBO implements Serializable {
                     this.name = name;
                 }
 
-                public Object getNumber() {
+                public String getNumber() {
                     return number;
                 }
 
-                public void setNumber(Object number) {
+                public void setNumber(String number) {
                     this.number = number;
                 }
 
@@ -2539,7 +2530,7 @@ public class OrderDetailBO implements Serializable {
                  * version : 0
                  */
 
-                private Object bussinessid;
+                private String bussinessid;
                 private int cinemaId;
                 private String createTime;
                 private String deleteTime;
@@ -2556,11 +2547,11 @@ public class OrderDetailBO implements Serializable {
                 private int version;
                 private List<MerchandiseListBean> merchandiseList;
 
-                public Object getBussinessid() {
+                public String getBussinessid() {
                     return bussinessid;
                 }
 
-                public void setBussinessid(Object bussinessid) {
+                public void setBussinessid(String bussinessid) {
                     this.bussinessid = bussinessid;
                 }
 
@@ -2718,19 +2709,19 @@ public class OrderDetailBO implements Serializable {
                     private int cinemaId;
                     private String counterPrice;
                     private String createTime;
-                    private Object deleteTime;
+                    private String deleteTime;
                     private int dxId;
-                    private Object goodsNum;
+                    private String goodsNum;
                     private int id;
-                    private Object imageUrl;
+                    private String imageUrl;
                     private int inventory;
-                    private Object itemClassId;
+                    private String itemClassId;
                     private int listOrder;
                     private String modifyTime;
                     private String name;
-                    private Object number;
+                    private String number;
                     private String onlinePrice;
-                    private Object originalPrice;
+                    private String originalPrice;
                     private int overInventorySellFlag;
                     private String type;
                     private String unit;
@@ -2779,11 +2770,11 @@ public class OrderDetailBO implements Serializable {
                         this.createTime = createTime;
                     }
 
-                    public Object getDeleteTime() {
+                    public String getDeleteTime() {
                         return deleteTime;
                     }
 
-                    public void setDeleteTime(Object deleteTime) {
+                    public void setDeleteTime(String deleteTime) {
                         this.deleteTime = deleteTime;
                     }
 
@@ -2795,11 +2786,11 @@ public class OrderDetailBO implements Serializable {
                         this.dxId = dxId;
                     }
 
-                    public Object getGoodsNum() {
+                    public String getGoodsNum() {
                         return goodsNum;
                     }
 
-                    public void setGoodsNum(Object goodsNum) {
+                    public void setGoodsNum(String goodsNum) {
                         this.goodsNum = goodsNum;
                     }
 
@@ -2811,11 +2802,11 @@ public class OrderDetailBO implements Serializable {
                         this.id = id;
                     }
 
-                    public Object getImageUrl() {
+                    public String getImageUrl() {
                         return imageUrl;
                     }
 
-                    public void setImageUrl(Object imageUrl) {
+                    public void setImageUrl(String imageUrl) {
                         this.imageUrl = imageUrl;
                     }
 
@@ -2827,11 +2818,11 @@ public class OrderDetailBO implements Serializable {
                         this.inventory = inventory;
                     }
 
-                    public Object getItemClassId() {
+                    public String getItemClassId() {
                         return itemClassId;
                     }
 
-                    public void setItemClassId(Object itemClassId) {
+                    public void setItemClassId(String itemClassId) {
                         this.itemClassId = itemClassId;
                     }
 
@@ -2859,11 +2850,11 @@ public class OrderDetailBO implements Serializable {
                         this.name = name;
                     }
 
-                    public Object getNumber() {
+                    public String getNumber() {
                         return number;
                     }
 
-                    public void setNumber(Object number) {
+                    public void setNumber(String number) {
                         this.number = number;
                     }
 
@@ -2875,11 +2866,11 @@ public class OrderDetailBO implements Serializable {
                         this.onlinePrice = onlinePrice;
                     }
 
-                    public Object getOriginalPrice() {
+                    public String getOriginalPrice() {
                         return originalPrice;
                     }
 
-                    public void setOriginalPrice(Object originalPrice) {
+                    public void setOriginalPrice(String originalPrice) {
                         this.originalPrice = originalPrice;
                     }
 

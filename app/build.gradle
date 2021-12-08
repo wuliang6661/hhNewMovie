@@ -161,4 +161,5 @@ dependencies {
     implementation 'com.zhy:okhttputils:2.6.2'
     implementation 'com.afollestad.material-dialogs:core:0.9.1.0'
     api 'com.tencent.mm.opensdk:wechat-sdk-android:+'
+    api 'com.tencent.tbs:tbssdk:44115'
 }

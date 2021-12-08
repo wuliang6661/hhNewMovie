@@ -66,34 +66,37 @@ public class onsumptiondetailfragment extends MVPBaseFragment<onsumptiondetailCo
                 switch (item.getOrderType()) {
                     case "0": // 0 购票订单
                         helper.setText(R.id.shijian, item.getPayDate());
-                        helper.setText(R.id.chongzhijine, "-" + Math.abs(item.getTicketRealPrice()) + "元");
                         helper.getView(R.id.card_num).setVisibility(View.VISIBLE);
-                        helper.setText(R.id.card_num, "共计" + Math.abs(item.getTicketNum()) + "张");
+                        helper.setText(R.id.card_num, "共计" + item.getTicketNum() + "张");
                         if (item.getPayStatus() == 1) {
+                            helper.setText(R.id.chongzhijine, "-" + item.getTicketRealPrice() + "元");
                             helper.setText(R.id.pay_title, "购票支付成功");
-                        } else if (item.getPayStatus() == 2) {
+                        } else if (item.getPayStatus() == 3) {
                             helper.setText(R.id.pay_title, "购票退款成功");
+                            helper.setText(R.id.chongzhijine, item.getTicketRealPrice() + "元");
                         }
                         break;
                     case "1":
                         helper.getView(R.id.card_num).setVisibility(View.GONE);
                         helper.setText(R.id.shijian, item.getPayDate());
-                        helper.setText(R.id.chongzhijine, "-" + Math.abs(item.getTicketRealPrice()) + "元");
                         if (item.getPayStatus() == 1) {
                             helper.setText(R.id.pay_title, "卖品支付成功");
-                        } else if (item.getPayStatus() == 2) {
+                            helper.setText(R.id.chongzhijine, "-" + item.getTicketRealPrice() + "元");
+                        } else if (item.getPayStatus() == 3) {
                             helper.setText(R.id.pay_title, "卖品退款成功");
+                            helper.setText(R.id.chongzhijine, item.getTicketRealPrice() + "元");
                         }
                         break;
                     case "2":
                         helper.setText(R.id.shijian, item.getPayDate());
-                        helper.setText(R.id.chongzhijine, "-" + Math.abs(item.getTicketRealPrice()) + "元");
                         helper.getView(R.id.card_num).setVisibility(View.VISIBLE);
-                        helper.setText(R.id.card_num, "共计" + Math.abs(item.getTicketNum()) + "张");
+                        helper.setText(R.id.card_num, "共计" + item.getTicketNum() + "张");
                         if (item.getPayStatus() == 1) {
                             helper.setText(R.id.pay_title, "支付成功");
-                        } else if (item.getPayStatus() == 2) {
+                            helper.setText(R.id.chongzhijine, "-" +item.getTicketRealPrice() + "元");
+                        } else if (item.getPayStatus() == 3) {
                             helper.setText(R.id.pay_title, "退款成功");
+                            helper.setText(R.id.chongzhijine, item.getTicketRealPrice() + "元");
                         }
                         break;
                 }

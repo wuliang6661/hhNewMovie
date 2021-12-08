@@ -36,11 +36,11 @@ public class SumptionBo implements Serializable {
         this.payDate = payDate;
     }
 
-    public Integer getTicketNum() {
+    public String getTicketNum() {
         return ticketNum;
     }
 
-    public void setTicketNum(Integer ticketNum) {
+    public void setTicketNum(String ticketNum) {
         this.ticketNum = ticketNum;
     }
 
@@ -60,7 +60,7 @@ public class SumptionBo implements Serializable {
         this.payStatus = payStatus;
     }
 
-    private Integer ticketNum;
+    private String ticketNum;
     private double ticketRealPrice;
 
 }

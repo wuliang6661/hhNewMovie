@@ -694,6 +694,12 @@
             android:name="JPUSH_APPKEY"
             android:value="61b0e07a185786ba2a1d27aa" />
 
+        <service
+            android:name="com.tencent.smtt.export.external.DexClassLoaderProviderService"
+            android:label="dexopt"
+            android:process=":dexopt" >
+        </service>
+
 
         <activity android:name="com.myp.hhcinema.ui.phonecode.phonecode"></activity>
         <activity android:name="com.myp.hhcinema.ui.phonecode.phonecode2"></activity>

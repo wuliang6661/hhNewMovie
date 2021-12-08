@@ -23,7 +23,6 @@ import com.myp.hhcinema.entity.MoviesByCidBO;
 import com.myp.hhcinema.entity.ProdectBO;
 import com.myp.hhcinema.entity.UserBO;
 import com.myp.hhcinema.service.AdvanceLoadX5Service;
-import com.myp.hhcinema.util.LogUtils;
 import com.myp.hhcinema.util.OKHttpUpdateHttpService;
 import com.myp.hhcinema.util.SPUtils;
 import com.myp.hhcinema.util.Utils;
@@ -108,11 +107,10 @@ public class MyApplication extends Application {
         locationService = new LocationService(getApplicationContext());
         SDKInitializer.initialize(getApplicationContext());
         initImageLoader();
-        preinitX5WebCore();
+//        preinitX5WebCore();
         //预加载x5内核
         Intent intent = new Intent(this, AdvanceLoadX5Service.class);
         startService(intent);
-//        setQ5sDK();
         /** 版本更新 **/
         XUpdate.get()
                 .debug(true)
@@ -138,27 +136,6 @@ public class MyApplication extends Application {
         if (!QbSdk.isTbsCoreInited()) {
             QbSdk.preInit(getApplicationContext(), null);// 设置X5初始化完成的回调接口
         }
-    }
-
-    /**
-     * 初始化X5内核
-     */
-    private void setQ5sDK() {
-        QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
-
-            @Override
-            public void onViewInitFinished(boolean arg0) {
-                // TODO Auto-generated method stub
-                //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
-                LogUtils.E(" onViewInitFinished is " + arg0);
-            }
-
-            @Override
-            public void onCoreInitFinished() {
-            }
-        };
-        //x5内核初始化接口
-        QbSdk.initX5Environment(getApplicationContext(), cb);
     }
 
     /**

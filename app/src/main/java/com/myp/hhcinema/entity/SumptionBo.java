@@ -6,11 +6,20 @@ import java.io.Serializable;
  * Created by Administrator on 2018/1/29.
  */
 public class SumptionBo implements Serializable {
-    private  Long id;
-    private  String   payDate;
 
+    private Long id;
+    private String payDate;
     private String orderType;
     private int payStatus;
+    private String payPrice;
+
+    public String getPayPrice() {
+        return payPrice;
+    }
+
+    public void setPayPrice(String payPrice) {
+        this.payPrice = payPrice;
+    }
 
     public String getOrderType() {
         return orderType;

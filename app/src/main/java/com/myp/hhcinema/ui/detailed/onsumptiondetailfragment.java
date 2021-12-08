@@ -68,12 +68,11 @@ public class onsumptiondetailfragment extends MVPBaseFragment<onsumptiondetailCo
                         helper.setText(R.id.shijian, item.getPayDate());
                         helper.getView(R.id.card_num).setVisibility(View.VISIBLE);
                         helper.setText(R.id.card_num, "共计" + item.getTicketNum() + "张");
+                        helper.setText(R.id.chongzhijine, item.getPayPrice() + "元");
                         if (item.getPayStatus() == 1) {
-                            helper.setText(R.id.chongzhijine, "-" + item.getTicketRealPrice() + "元");
                             helper.setText(R.id.pay_title, "购票支付成功");
                         } else if (item.getPayStatus() == 3) {
                             helper.setText(R.id.pay_title, "购票退款成功");
-                            helper.setText(R.id.chongzhijine, item.getTicketRealPrice() + "元");
                         }
                         break;
                     case "1":
@@ -81,10 +80,8 @@ public class onsumptiondetailfragment extends MVPBaseFragment<onsumptiondetailCo
                         helper.setText(R.id.shijian, item.getPayDate());
                         if (item.getPayStatus() == 1) {
                             helper.setText(R.id.pay_title, "卖品支付成功");
-                            helper.setText(R.id.chongzhijine, "-" + item.getTicketRealPrice() + "元");
                         } else if (item.getPayStatus() == 3) {
                             helper.setText(R.id.pay_title, "卖品退款成功");
-                            helper.setText(R.id.chongzhijine, item.getTicketRealPrice() + "元");
                         }
                         break;
                     case "2":
@@ -93,10 +90,8 @@ public class onsumptiondetailfragment extends MVPBaseFragment<onsumptiondetailCo
                         helper.setText(R.id.card_num, "共计" + item.getTicketNum() + "张");
                         if (item.getPayStatus() == 1) {
                             helper.setText(R.id.pay_title, "支付成功");
-                            helper.setText(R.id.chongzhijine, "-" +item.getTicketRealPrice() + "元");
                         } else if (item.getPayStatus() == 3) {
                             helper.setText(R.id.pay_title, "退款成功");
-                            helper.setText(R.id.chongzhijine, item.getTicketRealPrice() + "元");
                         }
                         break;
                 }

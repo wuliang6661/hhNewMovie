@@ -1586,7 +1586,6 @@ public class OrderBO implements Serializable {
          * version : 0
          */
 
-        private String address;
         private String beforeActivityPrice;
         private String beforeTicketPrice;
         private String canRefund;
@@ -1612,13 +1611,6 @@ public class OrderBO implements Serializable {
         private int version;
         private List<DetailsBean> details;
 
-        public String getAddress() {
-            return address;
-        }
-
-        public void setAddress(String address) {
-            this.address = address;
-        }
 
         public String getBeforeActivityPrice() {
             return beforeActivityPrice;

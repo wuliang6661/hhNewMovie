@@ -1,5 +1,7 @@
 package com.myp.hhcinema.entity;
 
+import com.myp.hhcinema.util.StringUtils;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -246,7 +248,7 @@ public class OrderDetailBO implements Serializable {
     }
 
     public CinemaBean getCinema() {
-        return cinema;
+        return cinema == null ? new CinemaBean() : cinema;
     }
 
     public void setCinema(CinemaBean cinema) {
@@ -846,7 +848,7 @@ public class OrderDetailBO implements Serializable {
         private int version;
 
         public String getAddress() {
-            return address;
+            return StringUtils.isEmpty(address) ? "" : address;
         }
 
         public void setAddress(String address) {
@@ -2250,7 +2252,7 @@ public class OrderDetailBO implements Serializable {
                 this.version = version;
             }
 
-            public static class MerchandiseBean implements Serializable{
+            public static class MerchandiseBean implements Serializable {
                 /**
                  * businessId : 1
                  * cardDiscountType : 2
